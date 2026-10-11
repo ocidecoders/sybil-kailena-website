@@ -368,3 +368,221 @@ footer {
     .timeline { padding-left: 20px; }
     .timeline-dot { left: -29px; }
 }
+
+/* ===== ONLYSYBILIANS - DARK THEME ===== */
+.dark-page {
+    background: #0A0A0A;
+    color: #E5E5E5;
+}
+
+/* AGE GATE MODAL */
+.age-gate {
+    position: fixed;
+    inset: 0;
+    background: #0A0A0A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 20px;
+}
+
+.age-gate.hidden {
+    display: none;
+}
+
+.age-gate-box {
+    max-width: 500px;
+    width: 100%;
+    background: #141414;
+    border: 1px solid #2A2A2A;
+    padding: 50px 40px;
+    text-align: center;
+    border-radius: 4px;
+    animation: fadeInUp 0.8s ease;
+}
+
+.age-gate-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #C9A96E;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.age-divider {
+    width: 50px;
+    height: 1px;
+    background: #C9A96E;
+    margin: 0 auto 25px;
+}
+
+.age-gate-box p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #B0B0B0;
+    margin-bottom: 15px;
+}
+
+.age-warning {
+    font-size: 12px !important;
+    color: #777 !important;
+    margin-bottom: 35px !important;
+}
+
+.age-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn-gold {
+    background: #C9A96E;
+    color: #0A0A0A;
+    border: 1px solid #C9A96E;
+    padding: 14px 30px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-gold:hover {
+    background: transparent;
+    color: #C9A96E;
+}
+
+.btn-outline {
+    display: inline-block;
+    padding: 14px 30px;
+    border: 1px solid #333;
+    color: #888;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    border-color: #666;
+    color: #ccc;
+}
+
+/* EXCLUSIVE CONTENT */
+.hidden {
+    display: none;
+}
+
+.dark-header {
+    background: rgba(10, 10, 10, 0.95) !important;
+    border-bottom: 1px solid #1F1F1F !important;
+}
+
+.exclusive-hero {
+    padding: 160px 20px 80px;
+    text-align: center;
+}
+
+.exclusive-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    color: #C9A96E;
+    margin-bottom: 15px;
+    letter-spacing: 3px;
+}
+
+.exclusive-hero p {
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 30px;
+}
+
+.dark-title h2 {
+    color: #E5E5E5 !important;
+}
+
+.exclusive-gallery-section,
+.exclusive-videos-section {
+    padding: 80px 6%;
+}
+
+.exclusive-gallery {
+    column-count: 3;
+    column-gap: 15px;
+}
+
+.exclusive-gallery img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    display: block;
+    cursor: pointer;
+    transition: opacity 0.4s ease;
+    break-inside: avoid;
+    filter: brightness(0.95);
+}
+
+.exclusive-gallery img:hover {
+    opacity: 0.85;
+}
+
+/* VIDEO GRID */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 25px;
+}
+
+.video-item {
+    background: #141414;
+    border: 1px solid #1F1F1F;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.video-item:hover {
+    border-color: #C9A96E;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.video-item p {
+    padding: 15px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #999;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .exclusive-gallery { column-count: 2; }
+}
+
+@media (max-width: 600px) {
+    .exclusive-gallery { column-count: 1; }
+    .exclusive-gallery-section,
+    .exclusive-videos-section { padding: 50px 5%; }
+    .age-gate-box { padding: 35px 25px; }
+}
