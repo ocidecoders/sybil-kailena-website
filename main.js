@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write');
                 iframe.setAttribute('referrerpolicy', 'no-referrer');
                 iframe.setAttribute('scrolling', 'no');
+                iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-presentation allow-forms allow-popups');
 
                 videoContainer.appendChild(iframe);
 
