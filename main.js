@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 iframe.setAttribute('loading', 'lazy');
                 iframe.setAttribute('allowfullscreen', 'true');
                 iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write');
-                iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+                iframe.setAttribute('referrerpolicy', 'no-referrer');
                 iframe.setAttribute('scrolling', 'no');
 
                 videoContainer.appendChild(iframe);
