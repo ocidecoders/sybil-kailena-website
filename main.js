@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
             exclusiveContent.classList.remove('hidden');
             loadExclusiveContent();
         }
-
         enterBtn.addEventListener('click', () => {
             sessionStorage.setItem('ageConfirmed', 'true');
             ageGate.classList.add('hidden');
@@ -33,16 +32,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ===== HELPER: Extract YouTube ID from URL =====
-    function getYouTubeId(url) {
-        const regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-        const match = url.match(regExp);
-        return (match && match[2].length === 11) ? match[2] : null;
+    // ===== HELPER: YouTube ID extract =====
+    function getYouTubeId(embedUrl) {
+        if (!embedUrl) return null;
+        const patterns = [
+            /youtube\.com\/embed\/([^?&/]+)/,
+            /youtube\.com\/watch\?v=([^?&/]+)/,
+            /youtu\.be\/([^?&/]+)/
+        ];
+        for (let p of patterns) {
+            const m = embedUrl.match(p);
+            if (m && m[1]) return m[1];
+        }
+        return null;
     }
 
     // ===== LOAD EXCLUSIVE CONTENT =====
     function loadExclusiveContent() {
-        // Exclusive Images
+        // Images
         const exGallery = document.getElementById('exclusiveGallery');
         if (exGallery && typeof exclusiveImages !== 'undefined') {
             exclusiveImages.forEach(img => {
@@ -55,11 +62,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Exclusive Videos (with auto thumbnail + title from link)
+        // Videos
         const exVideos = document.getElementById('exclusiveVideos');
         if (exVideos && typeof exclusiveVideos !== 'undefined') {
             exclusiveVideos.forEach(vid => {
-                const videoId = getYouTubeId(vid.url);
+                const ytId = getYouTubeId(vid.embed);
 
                 const videoItem = document.createElement('div');
                 videoItem.className = 'video-item';
@@ -67,48 +74,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 const videoContainer = document.createElement('div');
                 videoContainer.className = 'video-container';
 
-                // Thumbnail from YouTube
-                const thumbnail = document.createElement('div');
-                thumbnail.style.cssText = `
-                    position: absolute;
-                    inset: 0;
-                    background-size: cover;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
+                // Thumbnail wrapper
+                const thumb = document.createElement('div');
+                thumb.style.cssText = `
+                    position: absolute; inset: 0;
+                    background-size: cover; background-position: center;
                     background-color: #1a1a1a;
+                    display: flex; align-items: center; justify-content: center;
                 `;
-                if (videoId) {
-                    thumbnail.style.backgroundImage = `url('https://img.youtube.com/vi/${videoId}/maxresdefault.jpg')`;
+                if (ytId) {
+                    thumb.style.backgroundImage = `url('https://img.youtube.com/vi/${ytId}/maxresdefault.jpg')`;
                 }
 
+                // Play icon
                 const playIcon = document.createElement('div');
                 playIcon.className = 'video-play-icon';
 
-                videoContainer.appendChild(thumbnail);
+                videoContainer.appendChild(thumb);
                 videoContainer.appendChild(playIcon);
 
-                // Click to open video modal
-                if (videoId) {
-                    const embedUrl = `https://www.youtube.com/embed/${videoId}`;
-                    videoContainer.addEventListener('click', () => openVideoLightbox(embedUrl, ''));
-                }
+                // Click => modal
+                videoContainer.addEventListener('click', () => openVideoLightbox(vid.embed, vid.title));
 
                 videoItem.appendChild(videoContainer);
 
-                // Fetch title from noembed API
-                fetch(`https://noembed.com/embed?url=${encodeURIComponent(vid.url)}`)
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.title) {
-                            const title = document.createElement('p');
-                            title.textContent = data.title;
-                            videoItem.appendChild(title);
-                        }
-                    })
-                    .catch(() => {});
+                // Title
+                if (vid.title && vid.title.trim() !== '') {
+                    const titleEl = document.createElement('p');
+                    titleEl.textContent = vid.title;
+                    videoItem.appendChild(titleEl);
+                }
 
                 exVideos.appendChild(videoItem);
             });
@@ -123,10 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const closeBtn = document.createElement('span');
         closeBtn.className = 'lightbox-close';
         closeBtn.innerHTML = '&times;';
-        closeBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            overlay.remove();
-        });
+        closeBtn.addEventListener('click', (e) => { e.stopPropagation(); overlay.remove(); });
 
         const image = document.createElement('img');
         image.src = url;
@@ -168,6 +160,8 @@ document.addEventListener('DOMContentLoaded', () => {
         iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-presentation allow-forms allow-popups');
 
         container.appendChild(iframe);
+        wrapper.appendChild(closeBtn);
+        wrapper.appendChild(container);
 
         if (videoTitle && videoTitle.trim() !== '') {
             const titleEl = document.createElement('div');
@@ -176,11 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
             wrapper.appendChild(titleEl);
         }
 
-        wrapper.appendChild(closeBtn);
-        wrapper.appendChild(container);
-
         overlay.appendChild(wrapper);
-
         overlay.addEventListener('click', (e) => {
             if (e.target === overlay) {
                 overlay.remove();

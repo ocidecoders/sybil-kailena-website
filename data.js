@@ -30,9 +30,16 @@ const exclusiveImages = [
     { id: 23, url: 'https://i.ibb.co.com/tTjy77bP/73462212-006-e350.jpg', title: 'Bold 23' }
 ];
 
-// Exclusive Video Embeds
+// Exclusive Video Embeds (10 Videos)
 const exclusiveVideos = [
     { id: 1, embed: 'https://www.xnxx.com/embedframe/ulbkdkb1c56', title: 'Sybil Collection Vol 2 - LETSDOEIT (feat. Christian Clay)' },
     { id: 2, embed: 'https://www.xnxx.com/embedframe/uuftpuie495', title: 'Sybil - Ukrainian Beauty Romantic Session (LETSDOEIT)' },
-    { id: 3, embed: 'https://www.xnxx.com/embedframe/kfidchoa43c', title: 'Sybil - Whiteboxxx Session (LETSDOEIT)' }
+    { id: 3, embed: 'https://www.xnxx.com/embedframe/kfidchoa43c', title: 'Sybil - Whiteboxxx Session (LETSDOEIT)' },
+    { id: 4, embed: 'https://www.youtube.com/embed/JGwWNGJdvx8', title: 'Exclusive Video 04' },
+    { id: 5, embed: 'https://www.youtube.com/embed/RgKAFK5djSk', title: 'Exclusive Video 05' },
+    { id: 6, embed: 'https://www.youtube.com/embed/OPf0YbXqDm0', title: 'Exclusive Video 06' },
+    { id: 7, embed: 'https://www.youtube.com/embed/fJ9rUzIMcZQ', title: 'Exclusive Video 07' },
+    { id: 8, embed: 'https://www.youtube.com/embed/hT_nvWreIhg', title: 'Exclusive Video 08' },
+    { id: 9, embed: 'https://www.youtube.com/embed/CevxZvSJLk8', title: 'Exclusive Video 09' },
+    { id: 10, embed: 'https://www.youtube.com/embed/YQHsXMglC9A', title: 'Exclusive Video 10' }
 ];
