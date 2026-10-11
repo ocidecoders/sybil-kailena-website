@@ -4,28 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sybil Kailena | Glamour Photographer</title>
+    <meta name="description" content="Official portfolio of Sybil Kailena. Capturing elegance, artistry, and glamour.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+
+    <!-- HEADER -->
+    <header class="main-header">
         <div class="logo">Sybil Kailena</div>
         <nav>
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
-            <a href="onlysibilians.html">OnlySibilians</a>
+            <a href="onlysibilians.html" class="nav-bold">OnlySibilians</a>
         </nav>
     </header>
-    <main>
-        <section class="hero">
-            <h1>Capturing Elegance & Artistry</h1>
-        </section>
-        <section class="gallery" id="gallery">
-            <!-- Gallery items will be injected here by JS -->
-        </section>
-    </main>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Capturing Elegance<br>& Artistry</h1>
+            <p>Ukrainian Glamour Model & Actress</p>
+            <a href="#gallery" class="btn-primary">Explore Portfolio</a>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="gallery-section" id="gallery">
+        <div class="section-title">
+            <h2>Selected Works</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="gallery" id="gallery-container">
+            <!-- Gallery items injected by JS -->
+        </div>
+    </section>
+
+    <!-- ONLYSIBILIANS CTA -->
+    <section class="cta-section">
+        <h2>Exclusive Content</h2>
+        <p>For the true Sibylians.</p>
+        <a href="onlysibilians.html" class="btn-dark">Enter OnlySibilians</a>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-        <p>Powered by Ocide Coders</p>
+        <div class="footer-content">
+            <p class="footer-logo">Sybil Kailena</p>
+            <p class="footer-credit">Powered by Ocide Coders — A part of Ocide</p>
+            <p class="footer-copy">&copy; 2026 Sybil Kailena. All rights reserved.</p>
+        </div>
     </footer>
+
     <script src="data.js"></script>
     <script src="main.js"></script>
 </body>
