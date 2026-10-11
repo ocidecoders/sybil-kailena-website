@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const enterBtn = document.getElementById('enterBtn');
 
     if (ageGate && exclusiveContent && enterBtn) {
-        // Check if already confirmed in this session
         if (sessionStorage.getItem('ageConfirmed') === 'true') {
             ageGate.classList.add('hidden');
             exclusiveContent.classList.remove('hidden');
@@ -36,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== LOAD EXCLUSIVE CONTENT =====
     function loadExclusiveContent() {
-        // Exclusive Gallery
         const exGallery = document.getElementById('exclusiveGallery');
         if (exGallery && typeof exclusiveImages !== 'undefined') {
             exclusiveImages.forEach(img => {
@@ -49,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Exclusive Videos
         const exVideos = document.getElementById('exclusiveVideos');
         if (exVideos && typeof exclusiveVideos !== 'undefined') {
             exclusiveVideos.forEach(vid => {
@@ -66,23 +63,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ===== LIGHTBOX =====
+    // ===== LIGHTBOX WITH CLOSE BUTTON =====
     function openLightbox(url) {
+        // Create overlay
         const overlay = document.createElement('div');
-        overlay.style.cssText = `
-            position: fixed; inset: 0; background: rgba(0,0,0,0.95);
-            display: flex; align-items: center; justify-content: center;
-            z-index: 9999; cursor: pointer; padding: 20px;
-        `;
+        overlay.className = 'lightbox-overlay';
+
+        // Create close button (Cross)
+        const closeBtn = document.createElement('span');
+        closeBtn.className = 'lightbox-close';
+        closeBtn.innerHTML = 'X'; // This is the X symbol
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent clicking background to close
+            overlay.remove();
+        });
+
+        // Create image
         const image = document.createElement('img');
         image.src = url;
-        image.style.cssText = `
-            max-width: 95%; max-height: 90vh;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.7);
-            border-radius: 4px;
-        `;
-        overlay.appendChild(image);
+        image.className = 'lightbox-image';
+
+        // Click on background also closes
         overlay.addEventListener('click', () => overlay.remove());
+
+        overlay.appendChild(closeBtn);
+        overlay.appendChild(image);
         document.body.appendChild(overlay);
     }
 

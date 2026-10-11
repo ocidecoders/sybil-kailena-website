@@ -586,3 +586,48 @@ footer {
     .exclusive-videos-section { padding: 50px 5%; }
     .age-gate-box { padding: 35px 25px; }
 }
+
+/* ===== LIGHTBOX GALLERY VIEW ===== */
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.96);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.lightbox-image {
+    max-width: 95%;
+    max-height: 90vh;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+    border-radius: 4px;
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 45px;
+    color: #E5E5E5;
+    cursor: pointer;
+    font-weight: 300;
+    line-height: 1;
+    transition: color 0.3s ease, transform 0.3s ease;
+    z-index: 10001;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.lightbox-close:hover {
+    color: #C9A96E;
+    transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
