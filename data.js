@@ -30,9 +30,16 @@ const exclusiveImages = [
     { id: 23, url: 'https://i.ibb.co.com/tTjy77bP/73462212-006-e350.jpg', title: 'Bold 23' }
 ];
 
-// Videos: title empty dile kono text show korbe na
+// ভিডিওর জন্য শুধু লিংক - থাম্বনেইল ও টাইটেল অটো লোড হবে
 const exclusiveVideos = [
-    { id: 1, embed: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: '', thumb: 'https://i.ibb.co.com/0yvd6D6q/20261011-160832.jpg' },
-    { id: 2, embed: 'https://www.youtube.com/embed/9bZkp7q19f0', title: '', thumb: 'https://i.ibb.co.com/b5gPYM39/20261011-155931.jpg' },
-    { id: 3, embed: 'https://www.youtube.com/embed/kJQP7kiw5Fk', title: '', thumb: 'https://i.ibb.co.com/7xdb1gf3/20261011-155916.jpg' }
+    { id: 1, url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' },
+    { id: 2, url: 'https://www.youtube.com/watch?v=9bZkp7q19f0' },
+    { id: 3, url: 'https://www.youtube.com/watch?v=kJQP7kiw5Fk' },
+    { id: 4, url: 'https://www.youtube.com/watch?v=JGwWNGJdvx8' },
+    { id: 5, url: 'https://www.youtube.com/watch?v=RgKAFK5djSk' },
+    { id: 6, url: 'https://www.youtube.com/watch?v=OPf0YbXqDm0' },
+    { id: 7, url: 'https://www.youtube.com/watch?v=fJ9rUzIMcZQ' },
+    { id: 8, url: 'https://www.youtube.com/watch?v=hT_nvWreIhg' },
+    { id: 9, url: 'https://www.youtube.com/watch?v=CevxZvSJLk8' },
+    { id: 10, url: 'https://www.youtube.com/watch?v=YQHsXMglC9A' }
 ];

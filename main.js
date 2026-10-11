@@ -33,6 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ===== HELPER: Extract YouTube ID from URL =====
+    function getYouTubeId(url) {
+        const regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+        const match = url.match(regExp);
+        return (match && match[2].length === 11) ? match[2] : null;
+    }
+
     // ===== LOAD EXCLUSIVE CONTENT =====
     function loadExclusiveContent() {
         // Exclusive Images
@@ -48,17 +55,19 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Exclusive Videos (with thumbnails)
+        // Exclusive Videos (with auto thumbnail + title from link)
         const exVideos = document.getElementById('exclusiveVideos');
         if (exVideos && typeof exclusiveVideos !== 'undefined') {
             exclusiveVideos.forEach(vid => {
+                const videoId = getYouTubeId(vid.url);
+
                 const videoItem = document.createElement('div');
                 videoItem.className = 'video-item';
 
                 const videoContainer = document.createElement('div');
                 videoContainer.className = 'video-container';
 
-                // Create thumbnail with background image
+                // Thumbnail from YouTube
                 const thumbnail = document.createElement('div');
                 thumbnail.style.cssText = `
                     position: absolute;
@@ -69,12 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    background-color: #1a1a1a;
                 `;
-                // If thumbnail URL exists, use it; otherwise fallback to dark gradient
-                if (vid.thumb) {
-                    thumbnail.style.backgroundImage = `url('${vid.thumb}')`;
-                } else {
-                    thumbnail.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)';
+                if (videoId) {
+                    thumbnail.style.backgroundImage = `url('https://img.youtube.com/vi/${videoId}/maxresdefault.jpg')`;
                 }
 
                 const playIcon = document.createElement('div');
@@ -84,13 +91,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 videoContainer.appendChild(playIcon);
 
                 // Click to open video modal
-                videoContainer.addEventListener('click', () => openVideoLightbox(vid.embed, vid.title));
-
-                const title = document.createElement('p');
-                if (vid.title && vid.title.trim() !== '') { title.textContent = vid.title; videoItem.appendChild(videoContainer); videoItem.appendChild(title); } else { videoItem.appendChild(videoContainer); }
+                if (videoId) {
+                    const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+                    videoContainer.addEventListener('click', () => openVideoLightbox(embedUrl, ''));
+                }
 
                 videoItem.appendChild(videoContainer);
-                videoItem.appendChild(title);
+
+                // Fetch title from noembed API
+                fetch(`https://noembed.com/embed?url=${encodeURIComponent(vid.url)}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.title) {
+                            const title = document.createElement('p');
+                            title.textContent = data.title;
+                            videoItem.appendChild(title);
+                        }
+                    })
+                    .catch(() => {});
+
                 exVideos.appendChild(videoItem);
             });
         }
@@ -150,13 +169,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         container.appendChild(iframe);
 
-        const titleEl = document.createElement('div');
-        titleEl.className = 'video-lightbox-title';
-        titleEl.textContent = videoTitle;
+        if (videoTitle && videoTitle.trim() !== '') {
+            const titleEl = document.createElement('div');
+            titleEl.className = 'video-lightbox-title';
+            titleEl.textContent = videoTitle;
+            wrapper.appendChild(titleEl);
+        }
 
         wrapper.appendChild(closeBtn);
         wrapper.appendChild(container);
-        wrapper.appendChild(titleEl);
 
         overlay.appendChild(wrapper);
 
