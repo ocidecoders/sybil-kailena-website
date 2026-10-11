@@ -31,7 +31,9 @@ const exclusiveImages = [
     { id: 23, url: 'https://i.ibb.co.com/tTjy77bP/73462212-006-e350.jpg', title: 'Bold 23' }
 ];
 
-// Video embeds - replace these placeholders with actual iframe links later
+// Video embeds - Real Links
 const exclusiveVideos = [
-    { id: 1, embed: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Exclusive Video 01 (Placeholder)' }
+    { id: 1, embed: 'https://www.xnxx.com/embedframe/hvfftooddfb', title: 'Exclusive Video 01' },
+    { id: 2, embed: 'https://www.youtube.com/embed/9bZkp7q19f0', title: 'Exclusive Video 02' },
+    { id: 3, embed: 'https://www.youtube.com/embed/kJQP7kiw5Fk', title: 'Exclusive Video 03' }
 ];
