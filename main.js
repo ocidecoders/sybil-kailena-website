@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Exclusive Videos (with click-to-open-modal)
+        // Exclusive Videos (with thumbnails)
         const exVideos = document.getElementById('exclusiveVideos');
         if (exVideos && typeof exclusiveVideos !== 'undefined') {
             exclusiveVideos.forEach(vid => {
@@ -58,16 +58,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 const videoContainer = document.createElement('div');
                 videoContainer.className = 'video-container';
 
-                // Create a thumbnail-style placeholder (no autoplay, no direct iframe)
+                // Create thumbnail with background image
                 const thumbnail = document.createElement('div');
                 thumbnail.style.cssText = `
                     position: absolute;
                     inset: 0;
-                    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                 `;
+                // If thumbnail URL exists, use it; otherwise fallback to dark gradient
+                if (vid.thumb) {
+                    thumbnail.style.backgroundImage = `url('${vid.thumb}')`;
+                } else {
+                    thumbnail.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)';
+                }
 
                 const playIcon = document.createElement('div');
                 playIcon.className = 'video-play-icon';
@@ -113,15 +121,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== VIDEO LIGHTBOX =====
     function openVideoLightbox(embedUrl, videoTitle) {
-        // Create overlay
         const overlay = document.createElement('div');
         overlay.className = 'video-lightbox-overlay';
 
-        // Wrapper
         const wrapper = document.createElement('div');
         wrapper.className = 'video-lightbox-wrapper';
 
-        // Close button (X)
         const closeBtn = document.createElement('span');
         closeBtn.className = 'video-lightbox-close';
         closeBtn.innerHTML = '&times;';
@@ -131,7 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = '';
         });
 
-        // Video container
         const container = document.createElement('div');
         container.className = 'video-lightbox-container';
 
@@ -146,7 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         container.appendChild(iframe);
 
-        // Title
         const titleEl = document.createElement('div');
         titleEl.className = 'video-lightbox-title';
         titleEl.textContent = videoTitle;
@@ -157,7 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         overlay.appendChild(wrapper);
 
-        // Close on background click
         overlay.addEventListener('click', (e) => {
             if (e.target === overlay) {
                 overlay.remove();
@@ -165,9 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Prevent body scroll while modal open
         document.body.style.overflow = 'hidden';
-
         document.body.appendChild(overlay);
     }
 

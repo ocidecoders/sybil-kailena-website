@@ -31,9 +31,9 @@ const exclusiveImages = [
     { id: 23, url: 'https://i.ibb.co.com/tTjy77bP/73462212-006-e350.jpg', title: 'Bold 23' }
 ];
 
-// Video embeds - Real Links
+// Video embeds with thumbnails (Replace 'thumb' with your actual video cover images)
 const exclusiveVideos = [
-    { id: 1, embed: 'https://www.xnxx.com/embedframe/hvfftooddfb', title: 'Exclusive Video 01' },
-    { id: 2, embed: 'https://www.youtube.com/embed/9bZkp7q19f0', title: 'Exclusive Video 02' },
-    { id: 3, embed: 'https://www.youtube.com/embed/kJQP7kiw5Fk', title: 'Exclusive Video 03' }
+    { id: 1, embed: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Exclusive Video 01', thumb: 'https://i.ibb.co.com/0yvd6D6q/20261011-160832.jpg' },
+    { id: 2, embed: 'https://www.youtube.com/embed/9bZkp7q19f0', title: 'Exclusive Video 02', thumb: 'https://i.ibb.co.com/b5gPYM39/20261011-155931.jpg' },
+    { id: 3, embed: 'https://www.youtube.com/embed/kJQP7kiw5Fk', title: 'Exclusive Video 03', thumb: 'https://i.ibb.co.com/7xdb1gf3/20261011-155916.jpg' }
 ];
