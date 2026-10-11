@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ===== AGE GATE (OnlySybilians) =====
+    // ===== AGE GATE =====
     const ageGate = document.getElementById('ageGate');
     const exclusiveContent = document.getElementById('exclusiveContent');
     const enterBtn = document.getElementById('enterBtn');
@@ -52,40 +52,49 @@ document.addEventListener('DOMContentLoaded', () => {
             exclusiveVideos.forEach(vid => {
                 const videoItem = document.createElement('div');
                 videoItem.className = 'video-item';
-                videoItem.innerHTML = `
-                    <div class="video-container">
-                        <iframe src="${vid.embed}" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <p>${vid.title}</p>
-                `;
+
+                const videoContainer = document.createElement('div');
+                videoContainer.className = 'video-container';
+
+                const iframe = document.createElement('iframe');
+                iframe.src = vid.embed;
+                iframe.setAttribute('frameborder', '0');
+                iframe.setAttribute('loading', 'lazy');
+                iframe.setAttribute('allowfullscreen', 'true');
+                iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write');
+                iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+                iframe.setAttribute('scrolling', 'no');
+
+                videoContainer.appendChild(iframe);
+
+                const title = document.createElement('p');
+                title.textContent = vid.title;
+
+                videoItem.appendChild(videoContainer);
+                videoItem.appendChild(title);
                 exVideos.appendChild(videoItem);
             });
         }
     }
 
-    // ===== LIGHTBOX WITH CLOSE BUTTON =====
+    // ===== LIGHTBOX =====
     function openLightbox(url) {
-        // Create overlay
         const overlay = document.createElement('div');
         overlay.className = 'lightbox-overlay';
 
-        // Create close button (Cross)
         const closeBtn = document.createElement('span');
         closeBtn.className = 'lightbox-close';
-        closeBtn.innerHTML = 'X'; // This is the X symbol
+        closeBtn.innerHTML = '&times;';
         closeBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent clicking background to close
+            e.stopPropagation();
             overlay.remove();
         });
 
-        // Create image
         const image = document.createElement('img');
         image.src = url;
         image.className = 'lightbox-image';
 
-        // Click on background also closes
         overlay.addEventListener('click', () => overlay.remove());
-
         overlay.appendChild(closeBtn);
         overlay.appendChild(image);
         document.body.appendChild(overlay);
