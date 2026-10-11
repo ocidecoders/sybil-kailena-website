@@ -32,24 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ===== HELPER: YouTube ID extract =====
-    function getYouTubeId(embedUrl) {
-        if (!embedUrl) return null;
-        const patterns = [
-            /youtube\.com\/embed\/([^?&/]+)/,
-            /youtube\.com\/watch\?v=([^?&/]+)/,
-            /youtu\.be\/([^?&/]+)/
-        ];
-        for (let p of patterns) {
-            const m = embedUrl.match(p);
-            if (m && m[1]) return m[1];
-        }
-        return null;
-    }
-
     // ===== LOAD EXCLUSIVE CONTENT =====
     function loadExclusiveContent() {
-        // Images
+        // Exclusive Images
         const exGallery = document.getElementById('exclusiveGallery');
         if (exGallery && typeof exclusiveImages !== 'undefined') {
             exclusiveImages.forEach(img => {
@@ -62,19 +47,17 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Videos
+        // Exclusive Videos (manual thumb + title)
         const exVideos = document.getElementById('exclusiveVideos');
         if (exVideos && typeof exclusiveVideos !== 'undefined') {
             exclusiveVideos.forEach(vid => {
-                const ytId = getYouTubeId(vid.embed);
-
                 const videoItem = document.createElement('div');
                 videoItem.className = 'video-item';
 
                 const videoContainer = document.createElement('div');
                 videoContainer.className = 'video-container';
 
-                // Thumbnail wrapper
+                // Thumbnail (from thumb field in data.js)
                 const thumb = document.createElement('div');
                 thumb.style.cssText = `
                     position: absolute; inset: 0;
@@ -82,18 +65,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     background-color: #1a1a1a;
                     display: flex; align-items: center; justify-content: center;
                 `;
-                if (ytId) {
-                    thumb.style.backgroundImage = `url('https://img.youtube.com/vi/${ytId}/maxresdefault.jpg')`;
+                if (vid.thumb) {
+                    thumb.style.backgroundImage = `url('${vid.thumb}')`;
                 }
 
-                // Play icon
                 const playIcon = document.createElement('div');
                 playIcon.className = 'video-play-icon';
 
                 videoContainer.appendChild(thumb);
                 videoContainer.appendChild(playIcon);
 
-                // Click => modal
+                // Click => open modal
                 videoContainer.addEventListener('click', () => openVideoLightbox(vid.embed, vid.title));
 
                 videoItem.appendChild(videoContainer);
