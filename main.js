@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 videoContainer.addEventListener('click', () => openVideoLightbox(vid.embed, vid.title));
 
                 const title = document.createElement('p');
-                title.textContent = vid.title;
+                if (vid.title && vid.title.trim() !== '') { title.textContent = vid.title; videoItem.appendChild(videoContainer); videoItem.appendChild(title); } else { videoItem.appendChild(videoContainer); }
 
                 videoItem.appendChild(videoContainer);
                 videoItem.appendChild(title);
