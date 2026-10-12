@@ -1407,3 +1407,18 @@ footer {
     text-shadow: 0 2px 15px rgba(0,0,0,0.9);
     font-weight: 500;
 }
+
+/* ===== ABOUT HERO FIX: remove duplicate background image ===== */
+.about-hero.with-image::before {
+    background: none;
+    opacity: 0;
+}
+.about-hero.with-image::after {
+    background: linear-gradient(180deg, #0A0A0A 0%, #1A1A1A 50%, #0A0A0A 100%);
+}
+.about-hero.with-image h1 {
+    color: #C9A96E;
+}
+.about-hero.with-image p {
+    color: #999;
+}
