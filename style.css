@@ -1509,3 +1509,42 @@ footer {
     .timeline-date { font-size: 1.2rem; }
     .timeline-item { margin-bottom: 40px; }
 }
+
+/* ===== BOLD INFO CARD WITH IMAGE (Bra Size) ===== */
+.info-card.wide.with-image {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 20px 24px;
+}
+.info-card.wide.with-image .info-content {
+    flex: 1 1 55%;
+    display: flex;
+    flex-direction: column;
+}
+.info-card.wide.with-image .info-image {
+    flex: 1 1 40%;
+    display: flex;
+    justify-content: flex-end;
+}
+.info-card.wide.with-image .info-image img {
+    max-width: 130px;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    box-shadow: 0 8px 20px rgba(201,169,110,0.15);
+}
+@media (max-width: 600px) {
+    .info-card.wide.with-image {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .info-card.wide.with-image .info-image {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    .info-card.wide.with-image .info-image img {
+        max-width: 100%;
+    }
+}
