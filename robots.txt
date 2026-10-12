@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /onlysybilians.html
+
+Sitemap: https://sybil-kailena.onrender.com/sitemap.xml
