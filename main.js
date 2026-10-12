@@ -23,18 +23,20 @@ document.addEventListener('DOMContentLoaded', () => {
             ageGate.classList.add('hidden');
             exclusiveContent.classList.remove('hidden');
             loadExclusiveContent();
+            initImmersiveFeatures();
         }
         enterBtn.addEventListener('click', () => {
             sessionStorage.setItem('ageConfirmed', 'true');
             ageGate.classList.add('hidden');
             exclusiveContent.classList.remove('hidden');
             loadExclusiveContent();
+            initImmersiveFeatures();
         });
     }
 
     // ===== LOAD EXCLUSIVE CONTENT =====
     function loadExclusiveContent() {
-        // Exclusive Images
+        // Images
         const exGallery = document.getElementById('exclusiveGallery');
         if (exGallery && typeof exclusiveImages !== 'undefined') {
             exclusiveImages.forEach(img => {
@@ -47,25 +49,23 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Exclusive Videos (Grouped)
+        // Videos (grouped)
         const exVideosContainer = document.getElementById('exclusiveVideos');
         if (exVideosContainer && typeof exclusiveVideoGroups !== 'undefined') {
             exclusiveVideoGroups.forEach(group => {
-                // গ্রুপ সেকশন তৈরি
-                const groupSection = document.createElement('div');
-                groupSection.className = 'video-group-section';
+                if (!group.videos || group.videos.length === 0) return;
 
-                // গ্রুপ টাইটেল (যেমন: Sybil x private.com)
+                const groupSection = document.createElement('div');
+                groupSection.className = 'video-group-section reveal';
+
                 const groupTitle = document.createElement('h3');
                 groupTitle.className = 'video-group-title';
                 groupTitle.textContent = group.groupTitle;
                 groupSection.appendChild(groupTitle);
 
-                // ভিডিও গ্রিড
                 const videoGrid = document.createElement('div');
                 videoGrid.className = 'video-grid';
 
-                // গ্রুপের ভিডিওগুলো লুপ
                 group.videos.forEach(vid => {
                     const videoItem = document.createElement('div');
                     videoItem.className = 'video-item';
@@ -89,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     videoContainer.appendChild(thumb);
                     videoContainer.appendChild(playIcon);
-
                     videoContainer.addEventListener('click', () => openVideoLightbox(vid.embed, vid.title));
 
                     videoItem.appendChild(videoContainer);
@@ -107,6 +106,63 @@ document.addEventListener('DOMContentLoaded', () => {
                 exVideosContainer.appendChild(groupSection);
             });
         }
+    }
+
+    // ===== IMMERSIVE FEATURES =====
+    function initImmersiveFeatures() {
+        // ----- Scroll Reveal -----
+        const reveals = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        reveals.forEach(el => revealObserver.observe(el));
+
+        // ----- Animated Counters -----
+        const counters = document.querySelectorAll('.stat-number');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.getAttribute('data-target'), 10);
+                    animateCounter(el, target);
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(el => counterObserver.observe(el));
+
+        // ----- Active Side Dot on Scroll -----
+        const sections = document.querySelectorAll('section[id]');
+        const sideDots = document.querySelectorAll('.side-dot');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(sec => {
+                const top = sec.offsetTop - 200;
+                if (window.scrollY >= top) current = sec.getAttribute('id');
+            });
+            sideDots.forEach(dot => {
+                dot.classList.remove('active');
+                if (dot.getAttribute('href') === '#' + current) dot.classList.add('active');
+            });
+        });
+    }
+
+    function animateCounter(el, target) {
+        const duration = 1800;
+        const start = performance.now();
+        function step(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.floor(eased * target);
+            if (progress < 1) requestAnimationFrame(step);
+            else el.textContent = target;
+        }
+        requestAnimationFrame(step);
     }
 
     // ===== IMAGE LIGHTBOX =====
