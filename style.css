@@ -1846,3 +1846,152 @@ section.hero-slideshow > .hero-slideshow-content {
     z-index: 3 !important;
     margin: 0 auto !important;
 }
+
+/* ===================================================================
+   ★★★ FINAL OVERRIDE — FIXES NAVBAR + FEEL SYBIL + SPACING ★★★
+   =================================================================== */
+
+/* ---------- NAVBAR: force single line ---------- */
+header.main-header {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    padding: 14px 18px !important;
+    gap: 12px !important;
+    overflow: visible !important;
+}
+header.main-header .logo {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    line-height: 1 !important;
+}
+header.main-header nav {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 10px !important;
+    flex-wrap: nowrap !important;
+    flex-shrink: 1 !important;
+}
+header.main-header nav a {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 9px !important;
+    letter-spacing: 0.4px !important;
+    white-space: nowrap !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    line-height: 1 !important;
+}
+@media (max-width: 420px) {
+    header.main-header .logo { font-size: 15px !important; }
+    header.main-header nav { gap: 8px !important; }
+    header.main-header nav a { font-size: 8px !important; letter-spacing: 0.2px !important; }
+}
+
+/* ---------- FEEL SYBIL: force dark section ---------- */
+section.feel-sybil-section {
+    position: relative !important;
+    background: #0A0A0A !important;
+    color: #E5E5E5 !important;
+    padding: 120px 6% !important;
+    text-align: center !important;
+    overflow: hidden !important;
+    display: block !important;
+    min-height: auto !important;
+}
+section.feel-sybil-section .feel-sybil-bg {
+    position: absolute !important;
+    inset: 0 !important;
+    background: url('https://i.ibb.co.com/b5yV8tDc/58894732-002-0ca8.jpg') center/cover no-repeat !important;
+    opacity: 0.22 !important;
+    filter: blur(3px) !important;
+    z-index: 0 !important;
+}
+section.feel-sybil-section .feel-sybil-overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    background: radial-gradient(circle at 50% 50%, rgba(201,169,110,0.10) 0%, rgba(10,10,10,0.9) 70%) !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+section.feel-sybil-section .feel-sybil-content {
+    position: relative !important;
+    z-index: 2 !important;
+    max-width: 720px !important;
+    margin: 0 auto !important;
+}
+section.feel-sybil-section .feel-eyebrow {
+    font-size: 11px !important;
+    letter-spacing: 6px !important;
+    text-transform: uppercase !important;
+    color: #C9A96E !important;
+    margin-bottom: 20px !important;
+    display: block !important;
+}
+section.feel-sybil-section h2 {
+    font-family: 'Playfair Display', serif !important;
+    font-size: clamp(2.2rem, 5vw, 3.8rem) !important;
+    font-weight: 400 !important;
+    color: #F4E9D5 !important;
+    letter-spacing: 3px !important;
+    margin-bottom: 25px !important;
+    display: block !important;
+}
+section.feel-sybil-section .feel-divider {
+    width: 70px !important;
+    height: 1px !important;
+    background: linear-gradient(90deg, transparent, #C9A96E, transparent) !important;
+    margin: 0 auto 28px !important;
+}
+section.feel-sybil-section .feel-text {
+    font-size: 15px !important;
+    color: #B0B0B0 !important;
+    line-height: 1.8 !important;
+    margin-bottom: 42px !important;
+    display: block !important;
+}
+section.feel-sybil-section .btn-gold-outline {
+    display: inline-block !important;
+    padding: 16px 44px !important;
+    border: 1px solid #C9A96E !important;
+    color: #C9A96E !important;
+    background: transparent !important;
+    text-decoration: none !important;
+    font-size: 11px !important;
+    letter-spacing: 3px !important;
+    text-transform: uppercase !important;
+    transition: all 0.4s ease !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+section.feel-sybil-section .btn-gold-outline:hover {
+    background: #C9A96E !important;
+    color: #0A0A0A !important;
+}
+
+/* ---------- GLOBAL: prevent horizontal overflow ---------- */
+html, body {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+}
+* { box-sizing: border-box !important; }
+
+/* ---------- SECTION PADDING MOBILE TUNING ---------- */
+@media (max-width: 600px) {
+    .featured-section,
+    .intro-section,
+    .gallery-section,
+    .cta-section {
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+    }
+    .section-title h2 {
+        font-size: 1.5rem !important;
+    }
+}
