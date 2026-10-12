@@ -38,7 +38,7 @@ const exclusiveVideoGroups = [
             {
                 id: 1,
                 embed: 'https://short-link.me/interstitial-form/--/',
-                title: 'Gorgeous Sybil and her man enjoy their first meet in their new home with some romance . Sybil gets pounded ! at Private.com!',
+                title: 'Gorgeous Sybil\'s Romantic Home Debut: A First Meet to Remember. Exclusive Release by Private.com.',
                 thumb: 'https://i.ibb.co.com/7tY7Vh7x/xn-16-p.jpg'
             }
         ]
