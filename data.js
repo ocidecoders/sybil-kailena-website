@@ -4,7 +4,14 @@ const featuredImages = [
     'https://i.ibb.co.com/Q3p5qjZT/47096232-001-275b.jpg',
     'https://i.ibb.co.com/V0Mb7x94/93230550-004-8673.jpg',
     'https://i.ibb.co.com/YBX8VnNB/93317872-005-f46c.jpg',
-    'https://i.ibb.co.com/xq5tqqZx/93317872-004-efb1.jpg'
+    'https://i.ibb.co.com/xq5tqqZx/93317872-004-efb1.jpg',
+    'https://i.ibb.co.com/jxrxPwq/93317872-003-c933.jpg',
+    'https://i.ibb.co.com/svBPjv5S/93317872-002-5a88.jpg',
+    'https://i.ibb.co.com/HTMFHf7t/93317872-001-45e3.jpg',
+    'https://i.ibb.co.com/tPcYC20N/81576363-001-c729.jpg',
+    'https://i.ibb.co.com/JjsPBn2k/65658396-001-73d4.jpg',
+    'https://i.ibb.co.com/6RYg8FG7/12255898-003-455e.jpg',
+    'https://i.ibb.co.com/MxwV5x5Z/12255898-001-3c76.jpg'
 ];
 
 const feedImages = [

@@ -1497,19 +1497,13 @@ footer {
     box-shadow: 0 25px 50px rgba(0,0,0,0.18);
     filter: brightness(1.05);
 }
-.featured-grid img:nth-child(1) { grid-column: span 2; height: 480px; }
-.featured-grid img:nth-child(4) { grid-column: span 2; height: 400px; }
 @media (max-width: 900px) {
     .featured-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .featured-grid img { height: 280px; }
-    .featured-grid img:nth-child(1),
-    .featured-grid img:nth-child(4) { grid-column: span 2; height: 320px; }
 }
 @media (max-width: 550px) {
     .featured-grid { grid-template-columns: 1fr; }
     .featured-grid img,
-    .featured-grid img:nth-child(1),
-    .featured-grid img:nth-child(4) { grid-column: span 1; height: 380px; }
 }
 
 /* ===================================================================
@@ -1525,7 +1519,7 @@ footer {
 .feel-sybil-bg {
     position: absolute;
     inset: 0;
-    background: url('https://i.ibb.co.com/YBX8VnNB/93317872-005-f46c.jpg') center/cover no-repeat;
+    background: url('https://i.ibb.co.com/b5yV8tDc/58894732-002-0ca8.jpg') center/cover no-repeat;
     opacity: 0.22;
     filter: blur(3px);
     transform: scale(1.1);
@@ -1669,4 +1663,28 @@ footer {
 }
 @media (max-width: 400px) {
     .feed-grid { column-count: 2; }
+}
+
+/* Featured Grid — Editorial Mix (13 images) */
+.featured-grid img:nth-child(7n+1) {
+    grid-column: span 2;
+    height: 520px;
+}
+.featured-grid img:nth-child(7n+5) {
+    grid-column: span 2;
+    height: 460px;
+}
+@media (max-width: 900px) {
+    .featured-grid img:nth-child(7n+1),
+    .featured-grid img:nth-child(7n+5) {
+        grid-column: span 2;
+        height: 340px;
+    }
+}
+@media (max-width: 550px) {
+    .featured-grid img:nth-child(7n+1),
+    .featured-grid img:nth-child(7n+5) {
+        grid-column: span 1;
+        height: 400px;
+    }
 }
