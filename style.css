@@ -1263,3 +1263,10 @@ footer {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
+
+/* ===== INTRO PORTRAIT FRAME — mobile fix ===== */
+@media (max-width: 900px) {
+    .intro-image-wrap::before {
+        display: none;
+    }
+}
