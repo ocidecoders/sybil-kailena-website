@@ -1,3 +1,5 @@
+const introImage = 'https://i.ibb.co.com/0pr7fQDt/93479562-001-0488.jpg';
+
 const heroImages = [
     'https://i.ibb.co.com/hR9B4SYq/11766620-008-db04.jpg',
     'https://i.ibb.co.com/8R5cNDh/34175984-001-124a.jpg',

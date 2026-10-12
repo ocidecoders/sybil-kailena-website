@@ -1373,3 +1373,97 @@ footer {
     .hero-eyebrow { letter-spacing: 4px; font-size: 10px; }
     .hero-subtitle { letter-spacing: 4px; font-size: 10px; }
 }
+
+/* ===================================================================
+   SIGNATURE INTRO SECTION
+   =================================================================== */
+.intro-section {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    align-items: center;
+    gap: 70px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 6%;
+    background: var(--cream);
+}
+.intro-image-wrap {
+    position: relative;
+}
+.intro-image-wrap::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: -20px;
+    bottom: -20px;
+    border: 1px solid var(--gold);
+    z-index: 0;
+    pointer-events: none;
+}
+.intro-image-wrap img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+    z-index: 1;
+}
+.intro-text-wrap {
+    max-width: 520px;
+}
+.intro-eyebrow {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 22px;
+}
+.intro-text-wrap h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--charcoal);
+    margin-bottom: 25px;
+}
+.intro-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 30px;
+}
+.intro-text {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #555;
+    margin-bottom: 30px;
+}
+.intro-signature {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--gold);
+    letter-spacing: 1px;
+}
+@media (max-width: 900px) {
+    .intro-section {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        padding: 80px 6%;
+    }
+    .intro-text-wrap {
+        max-width: 100%;
+        text-align: center;
+    }
+    .intro-divider {
+        margin: 0 auto 30px;
+    }
+    .intro-image-wrap::before {
+        top: 12px;
+        left: 12px;
+        right: -12px;
+        bottom: -12px;
+    }
+}
