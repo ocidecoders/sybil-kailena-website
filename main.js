@@ -1,17 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ===== CINEMATIC HERO SLIDESHOW =====
+    // ===== HERO SLIDESHOW =====
     const slideshowContainer = document.getElementById('heroSlideshow');
     if (slideshowContainer && typeof heroImages !== 'undefined' && heroImages.length > 0) {
-        // Create slide divs
         heroImages.forEach((url, i) => {
             const slide = document.createElement('div');
             slide.className = 'slideshow-slide' + (i === 0 ? ' active' : '');
             slide.style.backgroundImage = `url('${url}')`;
             slideshowContainer.appendChild(slide);
         });
-
-        // Crossfade every 5 seconds
         const slides = slideshowContainer.querySelectorAll('.slideshow-slide');
         let currentIndex = 0;
         setInterval(() => {
@@ -19,6 +16,33 @@ document.addEventListener('DOMContentLoaded', () => {
             currentIndex = (currentIndex + 1) % slides.length;
             slides[currentIndex].classList.add('active');
         }, 5000);
+    }
+
+    // ===== FEATURED HIGHLIGHTS =====
+    const featuredGrid = document.getElementById('featuredGrid');
+    if (featuredGrid && typeof featuredImages !== 'undefined') {
+        featuredImages.forEach((url, i) => {
+            const img = document.createElement('img');
+            img.src = url;
+            img.alt = 'Featured ' + (i + 1);
+            img.loading = 'lazy';
+            img.addEventListener('click', () => openLightbox(url));
+            featuredGrid.appendChild(img);
+        });
+    }
+
+    // ===== FEED GRID =====
+    const feedGrid = document.getElementById('feedGrid');
+    if (feedGrid && typeof feedImages !== 'undefined') {
+        feedImages.forEach((url, i) => {
+            const img = document.createElement('img');
+            img.src = url;
+            img.alt = 'Feed ' + (i + 1);
+            img.loading = 'lazy';
+            img.style.animationDelay = (i * 0.06) + 's';
+            img.addEventListener('click', () => openLightbox(url));
+            feedGrid.appendChild(img);
+        });
     }
 
     // ===== HOMEPAGE GALLERY =====
@@ -55,9 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ===== LOAD EXCLUSIVE CONTENT =====
     function loadExclusiveContent() {
-        // Tease Carousel
         const teaseCarousel = document.getElementById('teaseCarousel');
         if (teaseCarousel && typeof teaseImages !== 'undefined') {
             teaseImages.forEach((url, i) => {
@@ -87,7 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (nextBtn) nextBtn.addEventListener('click', () => teaseCarousel.scrollBy({ left: 320, behavior: 'smooth' }));
         }
 
-        // Exclusive Images
         const exGallery = document.getElementById('exclusiveGallery');
         if (exGallery && typeof exclusiveImages !== 'undefined') {
             exclusiveImages.forEach(img => {
@@ -100,7 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Videos Grouped
         const exVideosContainer = document.getElementById('exclusiveVideos');
         if (exVideosContainer && typeof exclusiveVideoGroups !== 'undefined') {
             exclusiveVideoGroups.forEach(group => {
@@ -140,7 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ===== IMMERSIVE FEATURES =====
     function initImmersiveFeatures() {
         const reveals = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries) => {
@@ -194,7 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(step);
     }
 
-    // ===== IMAGE LIGHTBOX =====
     function openLightbox(url) {
         const overlay = document.createElement('div');
         overlay.className = 'lightbox-overlay';
@@ -211,7 +229,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(overlay);
     }
 
-    // ===== VIDEO LIGHTBOX =====
     function openVideoLightbox(embedUrl, videoTitle) {
         const overlay = document.createElement('div');
         overlay.className = 'video-lightbox-overlay';
@@ -255,7 +272,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(overlay);
     }
 
-    // ===== SMOOTH SCROLL =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
