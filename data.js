@@ -1,3 +1,16 @@
+// ===== HOME HERO SLIDESHOW =====
+const heroImages = [
+    'https://i.ibb.co.com/hR9B4SYq/11766620-008-db04.jpg',
+    'https://i.ibb.co.com/8R5cNDh/34175984-001-124a.jpg',
+    'https://i.ibb.co.com/G4hkRnb8/29220772-010-8582.jpg',
+    'https://i.ibb.co.com/9HsvJ1Cd/70212594-013-ede3.jpg',
+    'https://i.ibb.co.com/hFd5JmhX/98688668-026-aac3.jpg'
+];
+
+// ===== INTRO PORTRAIT =====
+const introImage = 'https://i.ibb.co.com/0pr7fQDt/93479562-001-0488.jpg';
+
+// ===== FEATURED HIGHLIGHTS (13) =====
 const featuredImages = [
     'https://i.ibb.co.com/nNycFVZP/40172310-006-829c.jpg',
     'https://i.ibb.co.com/GZ76X6L/81691491-003-455b.jpg',
@@ -14,6 +27,7 @@ const featuredImages = [
     'https://i.ibb.co.com/MxwV5x5Z/12255898-001-3c76.jpg'
 ];
 
+// ===== FEED PAGE (Feel Sybil) =====
 const feedImages = [
     'https://i.ibb.co.com/nNycFVZP/40172310-006-829c.jpg',
     'https://i.ibb.co.com/GZ76X6L/81691491-003-455b.jpg',
@@ -30,23 +44,14 @@ const feedImages = [
     'https://i.ibb.co.com/MxwV5x5Z/12255898-001-3c76.jpg'
 ];
 
-const introImage = 'https://i.ibb.co.com/0pr7fQDt/93479562-001-0488.jpg';
-const introImage = 'https://i.ibb.co.com/0pr7fQDt/93479562-001-0488.jpg';
-
-const heroImages = [
-    'https://i.ibb.co.com/hR9B4SYq/11766620-008-db04.jpg',
-    'https://i.ibb.co.com/8R5cNDh/34175984-001-124a.jpg',
-    'https://i.ibb.co.com/G4hkRnb8/29220772-010-8582.jpg',
-    'https://i.ibb.co.com/9HsvJ1Cd/70212594-013-ede3.jpg',
-    'https://i.ibb.co.com/hFd5JmhX/98688668-026-aac3.jpg'
-];
-
+// ===== HOMEPAGE GALLERY =====
 const galleryImages = [
     { id: 1, url: 'https://i.ibb.co.com/0yvd6D6q/20261011-160832.jpg', title: 'Kitchen Lifestyle' },
     { id: 2, url: 'https://i.ibb.co.com/b5gPYM39/20261011-155931.jpg', title: 'Studio Portrait' },
     { id: 3, url: 'https://i.ibb.co.com/7xdb1gf3/20261011-155916.jpg', title: 'Ladder Session' }
 ];
 
+// ===== ONLYSYBILIANS - BOLD IMAGES (23) =====
 const exclusiveImages = [
     { id: 1, url: 'https://i.ibb.co.com/NfN46MB/41332412-002-f0c1.jpg' },
     { id: 2, url: 'https://i.ibb.co.com/rRJsQGym/19855338-025-1b61.jpg' },
@@ -73,6 +78,7 @@ const exclusiveImages = [
     { id: 23, url: 'https://i.ibb.co.com/tTjy77bP/73462212-006-e350.jpg' }
 ];
 
+// ===== ONLYSYBILIANS - TEASE COLLECTION (83) =====
 const teaseImages = [
     'https://i.ibb.co.com/yFhsBj2H/97924381-104-c2e8.jpg',
     'https://i.ibb.co.com/hRHhD8Vm/97924381-074-8a46.jpg',
@@ -159,20 +165,62 @@ const teaseImages = [
     'https://i.ibb.co.com/8LzR8LPV/57184543-014-00f3.jpg'
 ];
 
+// ===== ONLYSYBILIANS - VIDEO GROUPS =====
 const exclusiveVideoGroups = [
     {
         groupTitle: 'Sybil x private.com',
         videos: [
             {
                 id: 1,
-                embed: 'https://short-link.me/interstitial-form/--/',
+                embed: 'https://www.xnxx.com/embedframe/kdmbktd3ecb',
                 title: 'Gorgeous Sybil\'s Romantic Home Debut: A First Meet to Remember. Exclusive Release by Private.com.',
                 thumb: 'https://i.ibb.co.com/7tY7Vh7x/xn-16-p.jpg'
+            },
+            {
+                id: 2,
+                embed: 'https://www.xnxx.com/embedframe/kcmokef822b',
+                title: 'Family First: Sybil & Clea Gaultier\'s Exclusive Passionate Trio. Full Flick by Private.com',
+                thumb: 'https://i.ibb.co.com/2Yc9c7kn/xn-11-p.jpg'
+            },
+            {
+                id: 3,
+                embed: 'https://www.xnxx.com/embedframe/ktucief5b8c',
+                title: 'Sybil\'s Kitchen Counter Romance & Exclusive Session. Full Flick by Private.com',
+                thumb: 'https://i.ibb.co.com/wNM11zxt/xn-10-p.jpg'
             }
         ]
     },
     {
         groupTitle: 'Sybil x blacked',
-        videos: []
+        videos: [
+            {
+                id: 1,
+                embed: 'https://www.xnxx.com/embedframe/kdlketm1b20',
+                title: 'Sybil\'s Starstruck Crush & Wild Transformation. Exclusive Release by Blacked.',
+                thumb: 'https://i.ibb.co.com/zhhT3cTr/xn-30-p.jpg'
+            }
+        ]
+    },
+    {
+        groupTitle: 'Sybil x My Family Pies',
+        videos: [
+            {
+                id: 1,
+                embed: 'https://www.xnxx.com/embedframe/uibokohf9c7',
+                title: 'My Family Pies - Stepsister Says "I just want to see your dick"',
+                thumb: 'https://i.ibb.co.com/4gKGB2ym/xn-24-p.jpg'
+            }
+        ]
+    },
+    {
+        groupTitle: 'Sybil x 21 Naturals',
+        videos: [
+            {
+                id: 1,
+                embed: 'https://www.xnxx.com/embedframe/uvcvmlf3c04',
+                title: 'Sybil & Charlie Dean - Exclusive 21 Naturals Session',
+                thumb: 'https://i.ibb.co.com/JWb0Z6cs/xn-3-p.jpg'
+            }
+        ]
     }
 ];

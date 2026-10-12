@@ -1688,3 +1688,68 @@ footer {
         height: 400px;
     }
 }
+
+/* ===== NAVBAR FIX (4 links) ===== */
+.main-header {
+    padding: 18px 4% !important;
+}
+.logo {
+    font-size: 22px !important;
+    letter-spacing: 0.5px !important;
+    white-space: nowrap !important;
+}
+.main-header nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: nowrap;
+}
+.main-header nav a {
+    margin-left: 0 !important;
+    font-size: 11px !important;
+    letter-spacing: 1.2px !important;
+    white-space: nowrap !important;
+}
+@media (max-width: 700px) {
+    .main-header {
+        padding: 14px 3% !important;
+        flex-wrap: nowrap !important;
+    }
+    .logo { font-size: 18px !important; }
+    .main-header nav { gap: 12px; }
+    .main-header nav a {
+        font-size: 10px !important;
+        letter-spacing: 0.5px !important;
+    }
+}
+@media (max-width: 420px) {
+    .logo { font-size: 15px !important; }
+    .main-header nav { gap: 8px; }
+    .main-header nav a {
+        font-size: 9px !important;
+        letter-spacing: 0.3px !important;
+    }
+}
+
+/* ===== TEXT SIZE TUNING ===== */
+.hero-slideshow-content h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem) !important;
+}
+.section-title h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem) !important;
+}
+.intro-text-wrap h2 {
+    font-size: clamp(1.7rem, 3.5vw, 2.4rem) !important;
+}
+.feed-hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem) !important;
+}
+.feel-sybil-content h2 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem) !important;
+}
+.cinematic-content h1 {
+    font-size: clamp(2.2rem, 6vw, 4.5rem) !important;
+}
+.exclusive-hero h1 {
+    font-size: clamp(2rem, 4.5vw, 3.5rem) !important;
+}
