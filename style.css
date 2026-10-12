@@ -1475,36 +1475,8 @@ footer {
     padding: 100px 6%;
     background: var(--cream);
 }
-.featured-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-.featured-grid img {
-    width: 100%;
-    height: 380px;
-    object-fit: cover;
-    display: block;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: transform 0.5s ease, box-shadow 0.5s ease, filter 0.5s ease;
-    filter: brightness(0.95);
-}
-.featured-grid img:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.18);
-    filter: brightness(1.05);
-}
 @media (max-width: 900px) {
-    .featured-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .featured-grid img { height: 280px; }
-}
 @media (max-width: 550px) {
-    .featured-grid { grid-template-columns: 1fr; }
-    .featured-grid img,
-}
 
 /* ===================================================================
    FEEL SYBIL CTA
@@ -1666,28 +1638,8 @@ footer {
 }
 
 /* Featured Grid — Editorial Mix (13 images) */
-.featured-grid img:nth-child(7n+1) {
-    grid-column: span 2;
-    height: 520px;
-}
-.featured-grid img:nth-child(7n+5) {
-    grid-column: span 2;
-    height: 460px;
-}
 @media (max-width: 900px) {
-    .featured-grid img:nth-child(7n+1),
-    .featured-grid img:nth-child(7n+5) {
-        grid-column: span 2;
-        height: 340px;
-    }
-}
 @media (max-width: 550px) {
-    .featured-grid img:nth-child(7n+1),
-    .featured-grid img:nth-child(7n+5) {
-        grid-column: span 1;
-        height: 400px;
-    }
-}
 
 /* ===== NAVBAR FIX (4 links) ===== */
 .main-header {
@@ -1752,4 +1704,46 @@ footer {
 }
 .exclusive-hero h1 {
     font-size: clamp(2rem, 4.5vw, 3.5rem) !important;
+}
+
+/* ===================================================================
+   FEATURED HIGHLIGHTS — MASONRY (Full images, no crop)
+   =================================================================== */
+.featured-grid {
+    column-count: 3;
+    column-gap: 18px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+.featured-grid img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 18px;
+    border-radius: 4px;
+    display: block;
+    cursor: pointer;
+    break-inside: avoid;
+    transition: transform 0.5s ease, box-shadow 0.5s ease, filter 0.5s ease;
+    filter: brightness(0.97);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: featFadeIn 0.9s ease forwards;
+}
+.featured-grid img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.18);
+    filter: brightness(1.05);
+    z-index: 2;
+    position: relative;
+}
+@keyframes featFadeIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 1100px) {
+    .featured-grid { column-count: 3; column-gap: 12px; }
+    .featured-grid img { margin-bottom: 12px; }
+}
+@media (max-width: 700px) {
+    .featured-grid { column-count: 2; column-gap: 10px; padding: 0 5%; }
+    .featured-grid img { margin-bottom: 10px; border-radius: 3px; }
 }
