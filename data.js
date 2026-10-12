@@ -30,7 +30,23 @@ const exclusiveImages = [
     { id: 23, url: 'https://i.ibb.co.com/tTjy77bP/73462212-006-e350.jpg', title: 'Bold 23' }
 ];
 
-// Videos: embed (iframe link), title (custom name), thumb (thumbnail image link)
-const exclusiveVideos = [
-    { id: 1, embed: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Sybil Collection Vol 1', thumb: 'https://i.ibb.co.com/Jw1PV77d/xn-18-t.jpg' }
+// গ্রুপভিত্তিক ভিডিও সেকশন
+const exclusiveVideoGroups = [
+    {
+        groupTitle: 'Sybil x private.com',
+        videos: [
+            {
+                id: 1,
+                embed: 'https://short-link.me/interstitial-form/--/',
+                title: 'Gorgeous Sybil and her man enjoy their first meet in their new home with some romance . Sybil gets pounded ! at Private.com!',
+                thumb: 'https://i.ibb.co.com/7tY7Vh7x/xn-16-p.jpg'
+            }
+        ]
+    },
+    {
+        groupTitle: 'Sybil x blacked',
+        videos: [
+            // ভবিষ্যতে এখানে blacked ভিডিওর লিংক বসাবেন
+        ]
+    }
 ];

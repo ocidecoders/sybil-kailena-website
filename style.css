@@ -748,3 +748,22 @@ footer {
         height: 55px;
     }
 }
+
+/* ===== VIDEO GROUP TITLES ===== */
+.video-group-section {
+    margin-bottom: 60px;
+}
+
+.video-group-section:last-child {
+    margin-bottom: 0;
+}
+
+.video-group-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: #C9A96E;
+    margin-bottom: 25px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #1F1F1F;
+    letter-spacing: 1.5px;
+}

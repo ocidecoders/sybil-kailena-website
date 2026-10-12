@@ -47,47 +47,64 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Exclusive Videos (manual thumb + title)
-        const exVideos = document.getElementById('exclusiveVideos');
-        if (exVideos && typeof exclusiveVideos !== 'undefined') {
-            exclusiveVideos.forEach(vid => {
-                const videoItem = document.createElement('div');
-                videoItem.className = 'video-item';
+        // Exclusive Videos (Grouped)
+        const exVideosContainer = document.getElementById('exclusiveVideos');
+        if (exVideosContainer && typeof exclusiveVideoGroups !== 'undefined') {
+            exclusiveVideoGroups.forEach(group => {
+                // গ্রুপ সেকশন তৈরি
+                const groupSection = document.createElement('div');
+                groupSection.className = 'video-group-section';
 
-                const videoContainer = document.createElement('div');
-                videoContainer.className = 'video-container';
+                // গ্রুপ টাইটেল (যেমন: Sybil x private.com)
+                const groupTitle = document.createElement('h3');
+                groupTitle.className = 'video-group-title';
+                groupTitle.textContent = group.groupTitle;
+                groupSection.appendChild(groupTitle);
 
-                // Thumbnail (from thumb field in data.js)
-                const thumb = document.createElement('div');
-                thumb.style.cssText = `
-                    position: absolute; inset: 0;
-                    background-size: cover; background-position: center;
-                    background-color: #1a1a1a;
-                    display: flex; align-items: center; justify-content: center;
-                `;
-                if (vid.thumb) {
-                    thumb.style.backgroundImage = `url('${vid.thumb}')`;
-                }
+                // ভিডিও গ্রিড
+                const videoGrid = document.createElement('div');
+                videoGrid.className = 'video-grid';
 
-                const playIcon = document.createElement('div');
-                playIcon.className = 'video-play-icon';
+                // গ্রুপের ভিডিওগুলো লুপ
+                group.videos.forEach(vid => {
+                    const videoItem = document.createElement('div');
+                    videoItem.className = 'video-item';
 
-                videoContainer.appendChild(thumb);
-                videoContainer.appendChild(playIcon);
+                    const videoContainer = document.createElement('div');
+                    videoContainer.className = 'video-container';
 
-                // Click => open modal
-                videoContainer.addEventListener('click', () => openVideoLightbox(vid.embed, vid.title));
+                    const thumb = document.createElement('div');
+                    thumb.style.cssText = `
+                        position: absolute; inset: 0;
+                        background-size: cover; background-position: center;
+                        background-color: #1a1a1a;
+                        display: flex; align-items: center; justify-content: center;
+                    `;
+                    if (vid.thumb) {
+                        thumb.style.backgroundImage = `url('${vid.thumb}')`;
+                    }
 
-                videoItem.appendChild(videoContainer);
+                    const playIcon = document.createElement('div');
+                    playIcon.className = 'video-play-icon';
 
-                // Title
-                if (vid.title && vid.title.trim() !== '') {
-                    const titleEl = document.createElement('p');
-                    titleEl.textContent = vid.title;
-                    videoItem.appendChild(titleEl);
-                }
+                    videoContainer.appendChild(thumb);
+                    videoContainer.appendChild(playIcon);
 
-                exVideos.appendChild(videoItem);
+                    videoContainer.addEventListener('click', () => openVideoLightbox(vid.embed, vid.title));
+
+                    videoItem.appendChild(videoContainer);
+
+                    if (vid.title && vid.title.trim() !== '') {
+                        const titleEl = document.createElement('p');
+                        titleEl.textContent = vid.title;
+                        videoItem.appendChild(titleEl);
+                    }
+
+                    videoGrid.appendChild(videoItem);
+                });
+
+                groupSection.appendChild(videoGrid);
+                exVideosContainer.appendChild(groupSection);
             });
         }
     }
@@ -96,16 +113,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function openLightbox(url) {
         const overlay = document.createElement('div');
         overlay.className = 'lightbox-overlay';
-
         const closeBtn = document.createElement('span');
         closeBtn.className = 'lightbox-close';
         closeBtn.innerHTML = '&times;';
         closeBtn.addEventListener('click', (e) => { e.stopPropagation(); overlay.remove(); });
-
         const image = document.createElement('img');
         image.src = url;
         image.className = 'lightbox-image';
-
         overlay.addEventListener('click', () => overlay.remove());
         overlay.appendChild(closeBtn);
         overlay.appendChild(image);
@@ -116,10 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function openVideoLightbox(embedUrl, videoTitle) {
         const overlay = document.createElement('div');
         overlay.className = 'video-lightbox-overlay';
-
         const wrapper = document.createElement('div');
         wrapper.className = 'video-lightbox-wrapper';
-
         const closeBtn = document.createElement('span');
         closeBtn.className = 'video-lightbox-close';
         closeBtn.innerHTML = '&times;';
@@ -128,10 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
             overlay.remove();
             document.body.style.overflow = '';
         });
-
         const container = document.createElement('div');
         container.className = 'video-lightbox-container';
-
         const iframe = document.createElement('iframe');
         iframe.src = embedUrl;
         iframe.setAttribute('frameborder', '0');
@@ -140,18 +150,15 @@ document.addEventListener('DOMContentLoaded', () => {
         iframe.setAttribute('referrerpolicy', 'no-referrer');
         iframe.setAttribute('scrolling', 'no');
         iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-presentation allow-forms allow-popups');
-
         container.appendChild(iframe);
         wrapper.appendChild(closeBtn);
         wrapper.appendChild(container);
-
         if (videoTitle && videoTitle.trim() !== '') {
             const titleEl = document.createElement('div');
             titleEl.className = 'video-lightbox-title';
             titleEl.textContent = videoTitle;
             wrapper.appendChild(titleEl);
         }
-
         overlay.appendChild(wrapper);
         overlay.addEventListener('click', (e) => {
             if (e.target === overlay) {
@@ -159,7 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.style.overflow = '';
             }
         });
-
         document.body.style.overflow = 'hidden';
         document.body.appendChild(overlay);
     }
