@@ -1331,3 +1331,79 @@ footer {
 @media (max-width: 600px) {
     .about-hero.with-image { padding: 140px 20px 80px; }
 }
+
+/* ===================================================================
+   ABOUT — TIMELINE
+   =================================================================== */
+.timeline-section {
+    padding: 80px 6% 100px;
+    background: var(--cream);
+}
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 30px;
+    border-left: 1px solid var(--gold);
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+}
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+.timeline-dot {
+    position: absolute;
+    left: -38px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    background: var(--gold);
+    border-radius: 50%;
+    border: 3px solid var(--cream);
+    box-sizing: content-box;
+}
+.timeline-date {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    margin-bottom: 8px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.timeline-content h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.05rem;
+    letter-spacing: 1.2px;
+    margin-bottom: 8px;
+    color: var(--charcoal);
+    font-weight: 500;
+}
+.timeline-content p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.7;
+}
+@media (max-width: 768px) {
+    .timeline-section { padding: 60px 5%; }
+    .timeline { padding-left: 22px; }
+    .timeline-dot { left: -30px; width: 12px; height: 12px; }
+    .timeline-date { font-size: 1.2rem; }
+    .timeline-item { margin-bottom: 40px; }
+}
+
+/* ===== ABOUT HERO — better text contrast ===== */
+.about-hero.with-image::before {
+    opacity: 0.45;
+}
+.about-hero.with-image::after {
+    background: linear-gradient(180deg, rgba(10,10,10,0.35) 0%, rgba(10,10,10,0.55) 55%, #0A0A0A 100%);
+}
+.about-hero.with-image h1 {
+    text-shadow: 0 2px 20px rgba(0,0,0,0.9), 0 4px 40px rgba(0,0,0,0.8);
+}
+.about-hero.with-image p {
+    text-shadow: 0 2px 15px rgba(0,0,0,0.9);
+    font-weight: 500;
+}
