@@ -1372,3 +1372,140 @@ footer {
 @media (max-width: 600px) {
     .about-hero { padding: 120px 20px 70px; }
 }
+
+/* ===================================================================
+   ABOUT PAGE — complete styling
+   =================================================================== */
+
+/* About Hero */
+.about-hero {
+    padding: 160px 20px 100px;
+    text-align: center;
+    background: var(--charcoal);
+}
+.about-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+.about-hero p {
+    font-size: 12px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #999;
+}
+
+/* About Content (bio section) */
+.about-content {
+    padding: 100px 6%;
+    background: var(--cream);
+}
+.bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.bio-image {
+    position: relative;
+}
+.bio-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 25px 55px rgba(0,0,0,0.15);
+}
+.bio-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: var(--charcoal);
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+.bio-text p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    line-height: 1.9;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Timeline */
+.timeline-section {
+    padding: 80px 6% 100px;
+    background: var(--cream);
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 30px;
+    border-left: 1px solid var(--gold);
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+}
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+.timeline-dot {
+    position: absolute;
+    left: -38px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    background: var(--gold);
+    border-radius: 50%;
+    border: 3px solid var(--cream);
+}
+.timeline-date {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    margin-bottom: 8px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.timeline-content h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.05rem;
+    letter-spacing: 1.2px;
+    margin-bottom: 8px;
+    color: var(--charcoal);
+    font-weight: 600;
+}
+.timeline-content p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.7;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+    .about-content { padding: 60px 5%; }
+    .bio-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .bio-text { text-align: center; }
+    .bio-text h2 { margin-bottom: 20px; }
+}
+@media (max-width: 768px) {
+    .about-hero { padding: 120px 20px 70px; }
+    .timeline-section { padding: 60px 5%; }
+    .timeline { padding-left: 22px; }
+    .timeline-dot { left: -30px; width: 12px; height: 12px; }
+    .timeline-date { font-size: 1.2rem; }
+    .timeline-item { margin-bottom: 40px; }
+}
