@@ -280,3 +280,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// ===== FEED PAGE: staggered scroll reveal =====
+window.addEventListener('load', () => {
+    const feedImgs = document.querySelectorAll('.feed-grid img');
+    if (!feedImgs.length) return;
+    if (!('IntersectionObserver' in window)) {
+        feedImgs.forEach(img => img.classList.add('reveal'));
+        return;
+    }
+    const feedObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal');
+                feedObs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+    feedImgs.forEach(img => feedObs.observe(img));
+});

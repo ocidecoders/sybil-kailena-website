@@ -1270,3 +1270,12 @@ footer {
         display: none;
     }
 }
+
+/* ===== FEED PAGE — SCROLL REVEAL ===== */
+.feed-grid img {
+    opacity: 0;
+    transition: opacity 1s ease, transform 0.5s ease, box-shadow 0.5s ease, filter 0.5s ease;
+}
+.feed-grid img.reveal {
+    opacity: 1;
+}
