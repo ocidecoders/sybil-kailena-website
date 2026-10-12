@@ -1,5 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // ===== CINEMATIC HERO SLIDESHOW =====
+    const slideshowContainer = document.getElementById('heroSlideshow');
+    if (slideshowContainer && typeof heroImages !== 'undefined' && heroImages.length > 0) {
+        // Create slide divs
+        heroImages.forEach((url, i) => {
+            const slide = document.createElement('div');
+            slide.className = 'slideshow-slide' + (i === 0 ? ' active' : '');
+            slide.style.backgroundImage = `url('${url}')`;
+            slideshowContainer.appendChild(slide);
+        });
+
+        // Crossfade every 5 seconds
+        const slides = slideshowContainer.querySelectorAll('.slideshow-slide');
+        let currentIndex = 0;
+        setInterval(() => {
+            slides[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % slides.length;
+            slides[currentIndex].classList.add('active');
+        }, 5000);
+    }
+
     // ===== HOMEPAGE GALLERY =====
     const galleryContainer = document.getElementById('gallery-container');
     if (galleryContainer && typeof galleryImages !== 'undefined') {
@@ -36,43 +57,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== LOAD EXCLUSIVE CONTENT =====
     function loadExclusiveContent() {
-        // ---- Tease Carousel ----
+        // Tease Carousel
         const teaseCarousel = document.getElementById('teaseCarousel');
         if (teaseCarousel && typeof teaseImages !== 'undefined') {
             teaseImages.forEach((url, i) => {
                 const card = document.createElement('div');
                 card.className = 'tease-card';
-
                 const img = document.createElement('img');
                 img.src = url;
                 img.alt = 'Tease ' + (i + 1);
                 img.loading = 'lazy';
-
                 const num = document.createElement('span');
                 num.className = 'tease-number';
                 num.textContent = String(i + 1).padStart(2, '0');
-
                 const overlay = document.createElement('div');
                 overlay.className = 'tease-overlay';
                 const overlayText = document.createElement('span');
                 overlayText.textContent = 'Tap to view';
                 overlay.appendChild(overlayText);
-
                 card.appendChild(img);
                 card.appendChild(num);
                 card.appendChild(overlay);
-
                 card.addEventListener('click', () => openLightbox(url));
                 teaseCarousel.appendChild(card);
             });
-
             const prevBtn = document.querySelector('.tease-prev');
             const nextBtn = document.querySelector('.tease-next');
             if (prevBtn) prevBtn.addEventListener('click', () => teaseCarousel.scrollBy({ left: -320, behavior: 'smooth' }));
             if (nextBtn) nextBtn.addEventListener('click', () => teaseCarousel.scrollBy({ left: 320, behavior: 'smooth' }));
         }
 
-        // ---- Exclusive Images ----
+        // Exclusive Images
         const exGallery = document.getElementById('exclusiveGallery');
         if (exGallery && typeof exclusiveImages !== 'undefined') {
             exclusiveImages.forEach(img => {
@@ -85,59 +100,40 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // ---- Videos (Grouped) ----
+        // Videos Grouped
         const exVideosContainer = document.getElementById('exclusiveVideos');
         if (exVideosContainer && typeof exclusiveVideoGroups !== 'undefined') {
             exclusiveVideoGroups.forEach(group => {
                 if (!group.videos || group.videos.length === 0) return;
-
                 const groupSection = document.createElement('div');
                 groupSection.className = 'video-group-section reveal';
-
                 const groupTitle = document.createElement('h3');
                 groupTitle.className = 'video-group-title';
                 groupTitle.textContent = group.groupTitle;
                 groupSection.appendChild(groupTitle);
-
                 const videoGrid = document.createElement('div');
                 videoGrid.className = 'video-grid';
-
                 group.videos.forEach(vid => {
                     const videoItem = document.createElement('div');
                     videoItem.className = 'video-item';
-
                     const videoContainer = document.createElement('div');
                     videoContainer.className = 'video-container';
-
                     const thumb = document.createElement('div');
-                    thumb.style.cssText = `
-                        position: absolute; inset: 0;
-                        background-size: cover; background-position: center;
-                        background-color: #1a1a1a;
-                        display: flex; align-items: center; justify-content: center;
-                    `;
-                    if (vid.thumb) {
-                        thumb.style.backgroundImage = `url('${vid.thumb}')`;
-                    }
-
+                    thumb.style.cssText = `position:absolute;inset:0;background-size:cover;background-position:center;background-color:#1a1a1a;display:flex;align-items:center;justify-content:center;`;
+                    if (vid.thumb) thumb.style.backgroundImage = `url('${vid.thumb}')`;
                     const playIcon = document.createElement('div');
                     playIcon.className = 'video-play-icon';
-
                     videoContainer.appendChild(thumb);
                     videoContainer.appendChild(playIcon);
                     videoContainer.addEventListener('click', () => openVideoLightbox(vid.embed, vid.title));
-
                     videoItem.appendChild(videoContainer);
-
                     if (vid.title && vid.title.trim() !== '') {
                         const titleEl = document.createElement('p');
                         titleEl.textContent = vid.title;
                         videoItem.appendChild(titleEl);
                     }
-
                     videoGrid.appendChild(videoItem);
                 });
-
                 groupSection.appendChild(videoGrid);
                 exVideosContainer.appendChild(groupSection);
             });
@@ -146,7 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== IMMERSIVE FEATURES =====
     function initImmersiveFeatures() {
-        // Scroll Reveal
         const reveals = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -158,7 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { threshold: 0.12 });
         reveals.forEach(el => revealObserver.observe(el));
 
-        // Animated Counters
         const counters = document.querySelectorAll('.stat-number');
         const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -172,7 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { threshold: 0.5 });
         counters.forEach(el => counterObserver.observe(el));
 
-        // Active Side Dot
         const sections = document.querySelectorAll('section[id]');
         const sideDots = document.querySelectorAll('.side-dot');
         window.addEventListener('scroll', () => {

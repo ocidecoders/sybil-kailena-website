@@ -1,3 +1,11 @@
+const heroImages = [
+    'https://i.ibb.co.com/hR9B4SYq/11766620-008-db04.jpg',
+    'https://i.ibb.co.com/8R5cNDh/34175984-001-124a.jpg',
+    'https://i.ibb.co.com/G4hkRnb8/29220772-010-8582.jpg',
+    'https://i.ibb.co.com/9HsvJ1Cd/70212594-013-ede3.jpg',
+    'https://i.ibb.co.com/hFd5JmhX/98688668-026-aac3.jpg'
+];
+
 const galleryImages = [
     { id: 1, url: 'https://i.ibb.co.com/0yvd6D6q/20261011-160832.jpg', title: 'Kitchen Lifestyle' },
     { id: 2, url: 'https://i.ibb.co.com/b5gPYM39/20261011-155931.jpg', title: 'Studio Portrait' },
