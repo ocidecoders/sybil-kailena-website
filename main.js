@@ -36,20 +36,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== LOAD EXCLUSIVE CONTENT =====
     function loadExclusiveContent() {
-        // Images
+        // ---- Tease Carousel ----
+        const teaseCarousel = document.getElementById('teaseCarousel');
+        if (teaseCarousel && typeof teaseImages !== 'undefined') {
+            teaseImages.forEach((url, i) => {
+                const card = document.createElement('div');
+                card.className = 'tease-card';
+
+                const img = document.createElement('img');
+                img.src = url;
+                img.alt = 'Tease ' + (i + 1);
+                img.loading = 'lazy';
+
+                const num = document.createElement('span');
+                num.className = 'tease-number';
+                num.textContent = String(i + 1).padStart(2, '0');
+
+                const overlay = document.createElement('div');
+                overlay.className = 'tease-overlay';
+                const overlayText = document.createElement('span');
+                overlayText.textContent = 'Tap to view';
+                overlay.appendChild(overlayText);
+
+                card.appendChild(img);
+                card.appendChild(num);
+                card.appendChild(overlay);
+
+                card.addEventListener('click', () => openLightbox(url));
+                teaseCarousel.appendChild(card);
+            });
+
+            const prevBtn = document.querySelector('.tease-prev');
+            const nextBtn = document.querySelector('.tease-next');
+            if (prevBtn) prevBtn.addEventListener('click', () => teaseCarousel.scrollBy({ left: -320, behavior: 'smooth' }));
+            if (nextBtn) nextBtn.addEventListener('click', () => teaseCarousel.scrollBy({ left: 320, behavior: 'smooth' }));
+        }
+
+        // ---- Exclusive Images ----
         const exGallery = document.getElementById('exclusiveGallery');
         if (exGallery && typeof exclusiveImages !== 'undefined') {
             exclusiveImages.forEach(img => {
                 const imgElement = document.createElement('img');
                 imgElement.src = img.url;
-                imgElement.alt = img.title;
+                imgElement.alt = 'Bold ' + img.id;
                 imgElement.loading = 'lazy';
                 imgElement.addEventListener('click', () => openLightbox(img.url));
                 exGallery.appendChild(imgElement);
             });
         }
 
-        // Videos (grouped)
+        // ---- Videos (Grouped) ----
         const exVideosContainer = document.getElementById('exclusiveVideos');
         if (exVideosContainer && typeof exclusiveVideoGroups !== 'undefined') {
             exclusiveVideoGroups.forEach(group => {
@@ -110,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== IMMERSIVE FEATURES =====
     function initImmersiveFeatures() {
-        // ----- Scroll Reveal -----
+        // Scroll Reveal
         const reveals = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -122,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { threshold: 0.12 });
         reveals.forEach(el => revealObserver.observe(el));
 
-        // ----- Animated Counters -----
+        // Animated Counters
         const counters = document.querySelectorAll('.stat-number');
         const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -136,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { threshold: 0.5 });
         counters.forEach(el => counterObserver.observe(el));
 
-        // ----- Active Side Dot on Scroll -----
+        // Active Side Dot
         const sections = document.querySelectorAll('section[id]');
         const sideDots = document.querySelectorAll('.side-dot');
         window.addEventListener('scroll', () => {
