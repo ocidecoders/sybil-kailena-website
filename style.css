@@ -1285,3 +1285,49 @@ footer {
 .exclusive-content.hidden {
     display: none;
 }
+
+/* ===== ABOUT HERO — with cinematic background ===== */
+.about-hero.with-image {
+    position: relative;
+    padding: 200px 20px 120px;
+    text-align: center;
+    overflow: hidden;
+    background: #0A0A0A;
+}
+.about-hero.with-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('https://i.ibb.co.com/whwJZmwj/38166829-021-70e9.jpg') center/cover no-repeat;
+    opacity: 0.35;
+    z-index: 0;
+}
+.about-hero.with-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.75) 60%, #0A0A0A 100%);
+    z-index: 1;
+}
+.about-hero.with-image h1 {
+    position: relative;
+    z-index: 2;
+    color: #F4E9D5;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 400;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+}
+.about-hero.with-image p {
+    position: relative;
+    z-index: 2;
+    color: #C9A96E;
+    font-size: 12px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+@media (max-width: 600px) {
+    .about-hero.with-image { padding: 140px 20px 80px; }
+}
