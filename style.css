@@ -1279,3 +1279,9 @@ footer {
 .feed-grid img.reveal {
     opacity: 1;
 }
+
+/* ===== FIX: Age gate + exclusive content hide ===== */
+.age-gate.hidden,
+.exclusive-content.hidden {
+    display: none;
+}
