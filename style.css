@@ -442,7 +442,7 @@ a { text-decoration: none; }
 .feel-sybil-bg {
     position: absolute;
     inset: 0;
-    background: url('https://i.ibb.co.com/b5yV8tDc/58894732-002-0ca8.jpg') center/cover no-repeat;
+    background: none;
     opacity: 0.22;
     filter: blur(3px);
     z-index: 0;
@@ -1547,4 +1547,11 @@ footer {
     .info-card.wide.with-image .info-image img {
         max-width: 100%;
     }
+}
+
+/* ===== FEEL SYBIL — subtle gradient background (no image) ===== */
+.feel-sybil-bg {
+    background: radial-gradient(circle at 50% 30%, rgba(201, 169, 110, 0.08) 0%, transparent 60%) !important;
+    opacity: 1 !important;
+    filter: none !important;
 }
