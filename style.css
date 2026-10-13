@@ -1853,3 +1853,19 @@ footer {
     .feed-back { width: 40px !important; height: 40px !important; }
     .feed-back::before { width: 9px; height: 9px; }
 }
+
+/* ===== ABOUT BIO IMAGE — mobile sizing ===== */
+@media (max-width: 900px) {
+    .bio-image {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+    .bio-image img {
+        border-radius: 6px;
+    }
+}
+@media (max-width: 480px) {
+    .bio-image {
+        max-width: 260px;
+    }
+}
