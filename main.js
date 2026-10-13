@@ -31,18 +31,56 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ===== FEED GRID =====
-    const feedGrid = document.getElementById('feedGrid');
-    if (feedGrid && typeof feedImages !== 'undefined') {
+    // ===== FEED — Full-screen vertical scroller =====
+    const feedScroller = document.getElementById('feedScroller');
+    const feedProgress = document.getElementById('feedProgress');
+    if (feedScroller && typeof feedImages !== 'undefined' && feedImages.length > 0) {
         feedImages.forEach((url, i) => {
+            const item = document.createElement('div');
+            item.className = 'feed-item';
+            if (i === 0) item.classList.add('visible');
+
             const img = document.createElement('img');
             img.src = url;
-            img.alt = 'Feed ' + (i + 1);
-            img.loading = 'lazy';
-            img.style.animationDelay = (i * 0.06) + 's';
-            img.addEventListener('click', () => openLightbox(url));
-            feedGrid.appendChild(img);
+            img.alt = 'Feel Sybil ' + (i + 1);
+            img.loading = i < 2 ? 'eager' : 'lazy';
+
+            const counter = document.createElement('span');
+            counter.className = 'feed-count';
+            counter.textContent = String(i + 1).padStart(2, '0') + ' / ' + String(feedImages.length).padStart(2, '0');
+
+            item.appendChild(img);
+            item.appendChild(counter);
+
+            if (i === 0) {
+                const hint = document.createElement('div');
+                hint.className = 'feed-hint';
+                hint.textContent = 'Scroll to explore';
+                item.appendChild(hint);
+            }
+
+            feedScroller.appendChild(item);
         });
+
+        // IntersectionObserver — reveal current item
+        const items = feedScroller.querySelectorAll('.feed-item');
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const visible = entry.isIntersecting && entry.intersectionRatio > 0.5;
+                entry.target.classList.toggle('visible', visible);
+            });
+        }, { threshold: [0, 0.5, 1], root: feedScroller });
+        items.forEach(item => obs.observe(item));
+
+        // Progress bar
+        if (feedProgress) {
+            feedScroller.addEventListener('scroll', () => {
+                const scrollTop = feedScroller.scrollTop;
+                const total = feedScroller.scrollHeight - feedScroller.clientHeight;
+                const pct = total > 0 ? (scrollTop / total) * 100 : 0;
+                feedProgress.style.width = pct + '%';
+            }, { passive: true });
+        }
     }
 
     // ===== LIGHTBOX =====
@@ -65,29 +103,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== SMOOTH SCROLL =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) target.scrollIntoView({ behavior: 'smooth' });
+            const href = this.getAttribute('href');
+            if (href.length < 2) return;
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     });
 
-});
-
-// ===== FEED PAGE: scroll reveal =====
-window.addEventListener('load', () => {
-    const feedImgs = document.querySelectorAll('.feed-grid img');
-    if (!feedImgs.length) return;
-    if (!('IntersectionObserver' in window)) {
-        feedImgs.forEach(img => img.classList.add('reveal'));
-        return;
-    }
-    const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.classList.add('reveal');
-                obs.unobserve(e.target);
-            }
-        });
-    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
-    feedImgs.forEach(img => obs.observe(img));
 });

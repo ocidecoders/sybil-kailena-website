@@ -2,69 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Feel Sybil | The Feed</title>
     <meta name="description" content="A curated visual feed of Sybil Kailena — moments, moods, and memories.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- SEO -->
-    <meta name="keywords" content="Sybil Kailena feed, Sybil Kailena photos, Sybil Kailena gallery, Ukrainian model photos, Sybil Kailena moments">
-    <meta name="author" content="Sybil Kailena">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://sybil-kailena.onrender.com/feed.html">
-    <meta name="theme-color" content="#C9A96E">
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Sybil Kailena">
-    <meta property="og:url" content="https://sybil-kailena.onrender.com/feed.html">
-    <meta property="og:title" content="Feel Sybil — The Feed | Sybil Kailena">
-    <meta property="og:description" content="A curated visual feed of Sybil Kailena — moments, moods, and memories from her personal archive.">
-    <meta property="og:image" content="https://i.ibb.co.com/whwJZmwj/38166829-021-70e9.jpg">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Feel Sybil — The Feed">
-    <meta name="twitter:description" content="Moments, moods, and memories — curated from her personal archive.">
-    <meta name="twitter:image" content="https://i.ibb.co.com/whwJZmwj/38166829-021-70e9.jpg">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="apple-touch-icon" href="favicon.svg">
 </head>
 <body class="feed-page">
 
-    <header class="main-header feed-header">
-        <div class="logo">Sybil Kailena</div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="feed.html" style="color: var(--gold);">Feed</a>
-            
-        </nav>
-    </header>
+    <a href="index.html" class="feed-back" aria-label="Back">←</a>
+    <div class="feed-progress" id="feedProgress"></div>
 
-    <section class="feed-hero">
-        <p class="feed-eyebrow">The Personal Archive</p>
-        <h1>Feel Sybil</h1>
-        <div class="feed-divider"></div>
-        <p class="feed-subtitle">A feed of moments, moods, and memories.</p>
-    </section>
-
-    <section class="feed-section">
-        <div class="feed-grid" id="feedGrid"></div>
-    </section>
-
-    <footer>
-        <div class="footer-content">
-            <p class="footer-logo">Sybil Kailena</p>
-            <p class="footer-credit">Powered by Ocide Coders — A part of Ocide</p>
-            <p class="footer-copy">&copy; 2026 Sybil Kailena. All rights reserved.</p>
-        </div>
-    </footer>
+    <div class="feed-scroller" id="feedScroller">
+        <!-- Feed items injected by JS -->
+    </div>
 
     <script src="data.js"></script>
-    <script src="videos.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
