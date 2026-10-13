@@ -1820,3 +1820,36 @@ footer {
     .feed-item .feed-hint { bottom: 20px; }
     .feed-back { top: 14px; left: 14px; width: 38px; height: 38px; }
 }
+
+/* ===== FEED BACK BUTTON — refined ===== */
+.feed-back {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 0 !important;
+    width: 44px !important;
+    height: 44px !important;
+    padding: 0 !important;
+}
+.feed-back::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-left: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    margin-left: 3px;
+    transition: margin 0.3s ease;
+}
+.feed-back:hover::before {
+    margin-left: 0;
+}
+.feed-back:hover {
+    background: rgba(201, 169, 110, 0.95) !important;
+    border-color: #C9A96E !important;
+    color: #0A0A0A !important;
+}
+
+@media (max-width: 600px) {
+    .feed-back { width: 40px !important; height: 40px !important; }
+    .feed-back::before { width: 9px; height: 9px; }
+}
