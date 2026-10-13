@@ -14,7 +14,7 @@ const heroImages = [
 ];
 
 // ===== INTRO PORTRAIT (1 image) =====
-const introImage = '';
+const introImage = 'https://i.ibb.co.com/rRDpk5M7/images-1.jpg';
 
 // ===== FEATURED HIGHLIGHTS =====
 const featuredImages = [
