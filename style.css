@@ -1660,3 +1660,8 @@ footer {
     .sybil-cta-section { padding: 60px 5%; }
     .sybil-cta-card { padding: 48px 28px; }
 }
+
+/* ===== FEED GRID — force visible (fix) ===== */
+.feed-grid img {
+    opacity: 1 !important;
+}
