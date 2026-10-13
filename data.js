@@ -47,4 +47,4 @@ const feedImages = [
 ];
 
 // ===== ABOUT PAGE — BIO PORTRAIT =====
-const bioImage = '';
+const bioImage = 'https://i.ibb.co.com/39S6K1Bf/411d8f774576650570d3b454061be286.jpg';
