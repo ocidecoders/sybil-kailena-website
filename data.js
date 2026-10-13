@@ -2,40 +2,29 @@
 // SYBIL KAILENA — SITE DATA
 // Clean, editorial portfolio structure
 // ===================================================================
-// NOTE: Add image URLs inside each array below.
-// Images should be elegant, dressed, editorial style.
-// ===================================================================
 
-// ===== HERO SLIDESHOW (5 images) =====
-// Cinematic, full-body or half-body, editorial style.
+// ===== HERO SLIDESHOW =====
 const heroImages = [
-    // 'https://...jpg',
-    // 'https://...jpg',
-    // 'https://...jpg',
-    // 'https://...jpg',
-    // 'https://...jpg'
+    'https://i.ibb.co.com/Y7rbMCg6/29220772-010-8582.jpg',
+    'https://i.ibb.co.com/ZR0F2XCf/61551744-001-8376.jpg',
+    'https://i.ibb.co.com/fYLK1tY2/93317872-001-45e3.jpg',
+    'https://i.ibb.co.com/NdW32Znm/98188993-003-099d.jpg',
+    'https://i.ibb.co.com/HpMck24d/64240040-001-cc56.jpg',
+    'https://i.ibb.co.com/r2LG8DKF/93479562-007-c384.jpg'
 ];
 
 // ===== INTRO PORTRAIT (1 image) =====
-// Close-up, natural smile, clean background.
 const introImage = '';
 
-// ===== FEATURED HIGHLIGHTS (6-13 images) =====
-// Handpicked editorial shots — mix of fashion, lifestyle, portraits.
+// ===== FEATURED HIGHLIGHTS =====
 const featuredImages = [
     // 'https://...jpg',
-    // 'https://...jpg',
-    // 'https://...jpg'
 ];
 
-// ===== FEEL SYBIL FEED (any number) =====
-// Personal archive — moments, moods, memories. Elegant only.
+// ===== FEEL SYBIL FEED =====
 const feedImages = [
     // 'https://...jpg',
-    // 'https://...jpg',
-    // 'https://...jpg'
 ];
 
 // ===== ABOUT PAGE — BIO PORTRAIT (1 image) =====
-// Polite, welcoming portrait for the biography section.
 const bioImage = '';
