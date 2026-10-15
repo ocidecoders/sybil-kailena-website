@@ -1,0 +1,21 @@
+    <!-- WebSite Schema — Google Site Name -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Sybil Kailena",
+        "alternateName": "Sybil Kailena Portfolio",
+        "url": "https://sybil-kailena.onrender.com/",
+        "inLanguage": "en",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Sybil Kailena",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://sybil-kailena.onrender.com/favicon.png",
+                "width": 192,
+                "height": 192
+            }
+        }
+    }
+    </script>
