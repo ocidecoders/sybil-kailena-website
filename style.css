@@ -2052,3 +2052,16 @@ html[lang="bn"] .article-hero h1 {
     .article-body h2 { margin: 42px 0 18px; }
     .article-cta { padding: 32px 22px; }
 }
+
+/* ===== WRAP class (for blog articles) ===== */
+.wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 6%;
+}
+.article-body .wrap {
+    max-width: 760px;
+}
+@media (max-width: 600px) {
+    .wrap { padding: 0 5%; }
+}
