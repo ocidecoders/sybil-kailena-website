@@ -1,5 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // ===== SMART ALT TEXT POOLS (SEO Optimized) =====
+    const altPoolHero = [
+        'Sybil Kailena portrait photography',
+        'Sybil Kailena editorial fashion',
+        'Sybil Kailena model portrait',
+        'Sybil Kailena ukrainian model',
+        'Sybil Kailena glamour photography',
+        'Sybil Kailena fashion photoshoot'
+    ];
+    const altPoolFeatured = [
+        'Sybil Kailena photoshoot',
+        'Sybil Kailena portrait photography',
+        'Sybil Kailena editorial fashion',
+        'Sybil Kailena lifestyle photography',
+        'Sybil Kailena model portrait',
+        'Sybil Kailena ukrainian model',
+        'Sybil Kailena artist photograph'
+    ];
+    const altPoolFeed = [
+        'Sybil Kailena photoshoot',
+        'Sybil Kailena portrait photography',
+        'Sybil Kailena editorial fashion',
+        'Sybil Kailena lifestyle photography',
+        'Sybil Kailena model portrait',
+        'Sybil Kailena ukrainian model',
+        'Sybil Kailena fashion photography',
+        'Sybil Kailena artistic portrait',
+        'Sybil Kailena natural light portrait'
+    ];
+
     // ===== HERO SLIDESHOW =====
     const slideshowContainer = document.getElementById('heroSlideshow');
     if (slideshowContainer && typeof heroImages !== 'undefined' && heroImages.length > 0) {
@@ -7,6 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const slide = document.createElement('div');
             slide.className = 'slideshow-slide' + (i === 0 ? ' active' : '');
             slide.style.backgroundImage = `url('${url}')`;
+            slide.setAttribute('role', 'img');
+            slide.setAttribute('aria-label', altPoolHero[i % altPoolHero.length]);
             slideshowContainer.appendChild(slide);
         });
         const slides = slideshowContainer.querySelectorAll('.slideshow-slide');
@@ -18,20 +50,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000);
     }
 
+    // ===== INTRO IMAGE (static HTML already exists, just ensure alt) =====
+    const introImg = document.querySelector('.intro-image-wrap img');
+    if (introImg && (!introImg.alt || introImg.alt === 'Sybil Kailena Portrait')) {
+        introImg.alt = 'Sybil Kailena portrait photography — Ukrainian model';
+    }
+
     // ===== FEATURED HIGHLIGHTS =====
     const featuredGrid = document.getElementById('featuredGrid');
     if (featuredGrid && typeof featuredImages !== 'undefined') {
         featuredImages.forEach((url, i) => {
             const img = document.createElement('img');
             img.src = url;
-            img.alt = 'Featured ' + (i + 1);
+            img.alt = altPoolFeatured[i % altPoolFeatured.length];
             img.loading = 'lazy';
-            img.addEventListener('click', () => openLightbox(url));
+            img.addEventListener('click', () => openLightbox(url, img.alt));
             featuredGrid.appendChild(img);
         });
     }
 
-    // ===== FEED — Full-screen vertical scroller =====
+    // ===== FEED GRID =====
+    const feedGrid = document.getElementById('feedGrid');
+    if (feedGrid && typeof feedImages !== 'undefined') {
+        feedImages.forEach((url, i) => {
+            const img = document.createElement('img');
+            img.src = url;
+            img.alt = altPoolFeed[i % altPoolFeed.length];
+            img.loading = 'lazy';
+            img.style.animationDelay = (i * 0.06) + 's';
+            img.addEventListener('click', () => openLightbox(url, img.alt));
+            feedGrid.appendChild(img);
+        });
+    }
+
+    // ===== FEED SCROLLER (OnlySybilians — actually feed.html) =====
     const feedScroller = document.getElementById('feedScroller');
     const feedProgress = document.getElementById('feedProgress');
     if (feedScroller && typeof feedImages !== 'undefined' && feedImages.length > 0) {
@@ -42,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const img = document.createElement('img');
             img.src = url;
-            img.alt = 'Feel Sybil ' + (i + 1);
+            img.alt = altPoolFeed[i % altPoolFeed.length];
             img.loading = i < 2 ? 'eager' : 'lazy';
 
             const counter = document.createElement('span');
@@ -62,7 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
             feedScroller.appendChild(item);
         });
 
-        // IntersectionObserver — reveal current item
         const items = feedScroller.querySelectorAll('.feed-item');
         const obs = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -72,7 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { threshold: [0, 0.5, 1], root: feedScroller });
         items.forEach(item => obs.observe(item));
 
-        // Progress bar
         if (feedProgress) {
             feedScroller.addEventListener('scroll', () => {
                 const scrollTop = feedScroller.scrollTop;
@@ -84,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ===== LIGHTBOX =====
-    function openLightbox(url) {
+    function openLightbox(url, altText) {
         const overlay = document.createElement('div');
         overlay.className = 'lightbox-overlay';
         const closeBtn = document.createElement('span');
@@ -93,6 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
         closeBtn.addEventListener('click', (e) => { e.stopPropagation(); overlay.remove(); });
         const image = document.createElement('img');
         image.src = url;
+        image.alt = altText || 'Sybil Kailena';
         image.className = 'lightbox-image';
         overlay.addEventListener('click', () => overlay.remove());
         overlay.appendChild(closeBtn);
@@ -103,13 +154,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== SMOOTH SCROLL =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href.length < 2) return;
-            const target = document.querySelector(href);
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
         });
     });
 

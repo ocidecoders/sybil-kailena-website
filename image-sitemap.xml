@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <url>
+        <loc>https://sybil-kailena.onrender.com/</loc>
+        <image:image>
+            <image:loc>https://sybil-kailena.onrender.com/apple-touch-icon.png</image:loc>
+            <image:title>Sybil Kailena Official Portfolio</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://sybil-kailena.onrender.com/feed.html</loc>
+        <image:image>
+            <image:loc>https://i.ibb.co.com/R4jHmkjt/66877620-007-3463.jpg</image:loc>
+            <image:title>Sybil Kailena photoshoot</image:title>
+        </image:image>
+    </url>
+</urlset>
